@@ -13,6 +13,9 @@
 |Bioproject|[PRJNA494527](https://www.ebi.ac.uk/ena/browser/view/PRJNA494527)|
 |Especie|*Homo Sapiens*|
 |Tipo de biblioteca|sinlge-end|
+|Metodo|RNA-Total|
+|Numero de transcriptoma|34|
+|Numero de replicas biologicas| 
 
 
 - [nf-core/rna-seq/3.12.0](https://nf-co.re/rnaseq/3.12.0/)
