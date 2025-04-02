@@ -15,7 +15,13 @@
 |Tipo de biblioteca|sinlge-end|
 |Metodo|RNA-Total|
 |Numero de transcriptoma|34|
-|Numero de replicas biologicas| 
+|Numero de replicas| 17 Replicas biologicas, con una replica tecnica por cada una ( Control y Firma génica inducida por glucocorticoides en la piel humana)|
+|Secuenciador Empleado|Ilumina NextSeq500|
+|Profundidad de secuenciacion de cada transcriptoma|12M a 40M|
+|Tamaño de las lecturas|75bp|
+|Articulo Cientifico|Sarkar MK, Kaplan N, Tsoi LC, Xing X et al. Endogenous Glucocorticoid Deficiency in Psoriasis Promotes Inflammation and Abnormal Differentiation. J Invest Dermatol 2017 Jul;137(7):1474-1483. PMID: 28259685 Los datos se pueden descargar desde NCBI o usando ENA.|
+
+
 
 
 - [nf-core/rna-seq/3.12.0](https://nf-co.re/rnaseq/3.12.0/)
