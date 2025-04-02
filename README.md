@@ -8,6 +8,13 @@
 
 ## Material Utilizado
 
+|Descripcion|Informacion|
+|-----------|-----------|
+|Bioproject|[PRJNA494527](https://www.ebi.ac.uk/ena/browser/view/PRJNA494527)|
+|Especie|*Homo Sapiens*|
+|Tipo de biblioteca|sinlge-end|
+
+
 - [nf-core/rna-seq/3.12.0](https://nf-co.re/rnaseq/3.12.0/)
 - [nextflow/23.10.0](https://www.nextflow.io/)
 - [singularity/3.7.0](https://docs.sylabs.io/guides/3.7/user-guide/)
@@ -24,10 +31,12 @@ library(tidyverse)
 library(pheatmap)
 library(DESeq2)
 library(dplyr)
-library(ggExtra)
+library(ggExtra)      
 library(DOSE)
 library(pathview)
 library(BiocManager)
 library(org.Hs.eg.db)
 library(AnnotationDbi)
 ```
+
+
