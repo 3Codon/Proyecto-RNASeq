@@ -14,7 +14,7 @@
 |Especie|*Homo Sapiens*|
 |Tipo de biblioteca|sinlge-end|
 |Metodo|RNA-Total|
-|Numero de transcriptoma|34|
+|Numero de transcriptomas|34|
 |Numero de replicas| 17 Replicas biologicas, con una replica tecnica por cada una ( Control y Firma génica inducida por glucocorticoides en la piel humana)|
 |Secuenciador Empleado|Ilumina NextSeq500|
 |Profundidad de secuenciacion de cada transcriptoma|12M a 40M|
