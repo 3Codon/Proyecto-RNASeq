@@ -46,6 +46,7 @@ library(pathview)
 library(BiocManager)
 library(org.Hs.eg.db)
 library(AnnotationDbi)
+library(knitr)
 ```
 
 
