@@ -1,0 +1,42 @@
+---
+title: "Analisis Diferencial de pacientes con Psoriasis en tratamiento con Glucocorticoides"
+author: "Equipo 1"
+date: "`r Sys.Date()`"
+output: 
+  rmdformats::readthedown
+---
+
+| Descripcion | Informacion |
+|------------------------------------|------------------------------------|
+| Bioproject | [PRJNA494527](https://www.ebi.ac.uk/ena/browser/view/PRJNA494527) |
+| Especie | *Homo Sapiens* |
+| Tipo de biblioteca | sinlge-end |
+| Metodo | ARN-Total |
+| Numero de transcriptomas | 34 |
+| Numero de replicas | 17 Replicas biologicas, con una replica tecnica por cada una ( Control y Firma génica inducida por glucocorticoides en la piel humana) |
+| Secuenciador Empleado | Ilumina NextSeq500 |
+| Profundidad de secuenciacion de cada transcriptoma | 12M a 40M |
+| Tamaño de las lecturas | 75bp |
+| Articulo Cientifico | Sarkar MK, Kaplan N, Tsoi LC, Xing X et al. Endogenous Glucocorticoid Deficiency in Psoriasis Promotes Inflammation and Abnormal Differentiation. J Invest Dermatol 2017 Jul;137(7):1474-1483. PMID: 28259685 Los datos se pueden descargar desde NCBI o usando ENA. |
+
+## Abstract
+
+En este estudio, comparamos la expresión génica en pacientes con psoriasis en tres tipos de muestras de piel: sana, lesional y no lesional. Además, analizamos los cambios en la expresión génica antes y 24 horas después del tratamiento con glucocorticoides para evaluar su impacto a corto plazo.
+
+Para ello, se obtuvieron muestras de piel de 17 pacientes con psoriasis, generando un total de 34 transcriptomas. Se extrajo ARN total de cada muestra y se realizó secuenciación de ARN de alta resolución utilizando la plataforma Illumina NextSeq 500.
+
+El estudio se basó en datos de expresión génica obtenidos mediante secuenciación de ARN (RNA-seq). Estos datos permiten cuantificar los niveles de transcripción de los genes en cada tipo de muestra y evaluar cómo varían en respuesta al tratamiento con glucocorticoides.
+
+Para el análisis de los datos de RNA-seq, utilizamos el pipeline nf-core/rna-seq, implementado en Nextflow, debido a su reproducibilidad, escalabilidad y automatización en el procesamiento de datos de secuenciación. Este pipeline permite realizar pasos clave como control de calidad, alineación de lecturas y cuantificación de expresión génica de manera eficiente y estandarizada.
+
+Posteriormente, realizamos un análisis de expresión diferencial con DESeq2, un paquete de R ampliamente utilizado en estudios transcriptómicos. Esta herramienta aplica modelos estadísticos para identificar genes que presentan cambios significativos en su expresión entre las diferentes condiciones del estudio (antes y después del tratamiento con glucocorticoides).
+
+Para interpretar los cambios en la expresión génica, se realizó un análisis funcional utilizando Gene Ontology (GO), lo que permitió identificar los procesos biológicos más representados entre los genes diferencialmente expresados.
+
+Además, se empleó KEGG para identificar las vías metabólicas en las que están involucrados estos genes. Este análisis permitió contextualizar los efectos del tratamiento con glucocorticoides dentro de rutas biológicas específicas, proporcionando una visión más completa de los mecanismos moleculares implicados en la psoriasis y su respuesta al tratamiento.
+
+Los análisis de expresión diferencial revelaron que el tratamiento con glucocorticoides afecta genes involucrados en procesos antiinflamatorios y de diferenciación celular en la piel de pacientes con psoriasis.
+
+Uno de los genes más regulados por los glucocorticoides fue TSC22D3, el cual desempeña un papel clave en la respuesta inmune y la diferenciación celular, sugiriendo su importancia en la acción del tratamiento.
+
+Otro hallazgo relevante fue la regulación de MERTK, un receptor tirosina quinasa implicado en la resolución de la inflamación crónica, lo que refuerza su posible papel en la modulación de la psoriasis.
