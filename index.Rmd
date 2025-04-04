@@ -553,6 +553,10 @@ El output de star es justo los **muestra.bam** y **muestra.bam.bai** que se encu
 
 En esta carpeta se encuentran los fastqs procesados por fastp, con la forma **muestra.fastp.fastq.gz**.
 
+#### r_script
+
+Esta carpeta contiene los scripts de R que usamos para hacer el análisis diferencial, la visualización de datos y análisis funcional. También contiene un archivo .Rproj, que es un proyecto de RStudio, y un archivo .Rhistory, que guarda el historial de comandos ejecutados en R.
+
 # Resultados
 
 ## Calidad de secuencias
