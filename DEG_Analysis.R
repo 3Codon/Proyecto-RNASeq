@@ -16,22 +16,22 @@ rm(list=ls())  # Limpiar el entorno de trabajo
 # Cargar paquetes necesarios
 library(DESeq2)   # Para análisis de expresión diferencial
 library(dplyr)    # Para manipulación de datos
-tlibrary(ggplot2) # Para visualización de datos
+library(ggplot2) # Para visualización de datos
 library(ggExtra)  # Para agregar gráficos marginales
-tlibrary(DOSE)    # Para análisis de enriquecimiento funcional
+library(DOSE)    # Para análisis de enriquecimiento funcional
 
 # Cargar el objeto DESeqDataSet previamente guardado
 load("/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/DEG_output/deseq2_qc/deseq2.dds.RData")
 
 # Definir directorios de salida
-outdir <- "/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/"  # Directorio para guardar resultados
-figdir <- '/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/figures/'  # Directorio para guardar figuras
+outdir <- "/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/Analisis_diferencial/"  # Directorio para guardar resultados
+figdir <- '/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/Analisis_diferencial/figures/'  # Directorio para guardar figuras
 
 # Cargar la metadata actualizada
-metadata <- read.table("/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/datas/metadata.tsv", header=TRUE, sep="\t", row.names=1)
+metadata <- read.table("/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/data/metadata.tsv", header=TRUE, sep="\t", row.names=1)
 
 # Convertir las columnas en factores para el análisis
-tmetadata$Condition <- as.factor(metadata$Condition)
+metadata$Condition <- as.factor(metadata$Condition)
 metadata$Type <- as.factor(metadata$Type)
 metadata$Individuals <- as.factor(metadata$Individuals)
 
@@ -52,7 +52,7 @@ design(dds) <- ~Condition * Type
 dds <- DESeq(dds)
 
 # Transformación de variancia estabilizada (VST) para normalización
-tvsdata <- vst(dds, blind = FALSE) 
+vsdata <- vst(dds, blind = FALSE) 
 
 # Guardar el objeto actualizado con los resultados de DESeq2
 save(metadata, dds, file = paste0(outdir, 'dds_TypesnCondition.RData'))
@@ -69,7 +69,7 @@ pca_df$Condition <- colData(dds)$Condition  # Agregar metadata al PCA
 pca_df$Type <- colData(dds)$Type
 
 # Guardar la figura del PCA en un archivo PNG
-png(file = paste0(figdir, "PCA_vsdata.png"), width = 3000, height = 2000, res = 300)
+png(file = paste0(figdir, "PCA_vsdata2.png"), width = 3000, height = 2000, res = 300)
 
 # Crear gráfico PCA con ggplot2
 p1 <- ggplot(pca_df, aes(PC1, PC2, color = Condition)) +

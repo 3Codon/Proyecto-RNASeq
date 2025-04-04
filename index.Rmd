@@ -1,5 +1,5 @@
 ---
-title: "Analisis Diferencial de pacientes con Psoriasis en tratamiento con Glucocorticoides"
+title: "Expresión Diferencial y Análisis Funcional de Pacientes con Psoriasis en Tratamiento con Glucocorticoides"
 author: "Equipo 1"
 date: "`r Sys.Date()`"
 output: 
@@ -37,7 +37,7 @@ output:
 
 -   Secuenciador empleado: **Illumina NextSeq 500**
 
--   Distribución de las muestras: Control: 17 replicas de biopsias de piel de perforación de espesor completo (`SRX4792843, SRX479284, - - SRX4792847, SRX4792849, SRX4792851, SRX4792853, SRX4792855, SRX4792857, SRX4792859, SRX4792861, SRX4792863, SRX4792865, SRX4792867, SRX4792869, SRX4792871, SRX4792873, SRX4792876`)
+-   Distribución de las muestras: Control: 17 replicas de biopsias de piel de perforación de espesor completo (SRX4792843, SRX479284, SRX4792847, SRX4792849, SRX4792851, SRX4792853, SRX4792855, SRX4792857, SRX4792859, SRX4792861, SRX4792863, SRX4792865, SRX4792867, SRX4792869, SRX4792871, SRX4792873, SRX4792876)
 
 -   Tratamiento: 17 muestras provientes de biopsias de piel tratadas con glucocorticoides (SRX4792844, SRX4792846, SRX4792848, SRX4792850, SRX4792852, SRX4792854, SRX4792856, SRX4792858, SRX4792860, SRX4792862, SRX4792864, SRX4792866, SRX4792868, SRX4792870, SRX4792872, SRX4792874, SRX4792875)
 
@@ -119,7 +119,7 @@ Nosotros usamos el pipeline de nf-core rna-seq, por lo cual tenemos como output 
 
 ## Estructura General
 
-```
+```         
 .
 ├── adapters
 │   └── TruSeq3-SE.fa
@@ -247,6 +247,52 @@ Nosotros usamos el pipeline de nf-core rna-seq, por lo cual tenemos como output 
 ## Predicción de cuentas
 
 ## Expresión diferencial
+
+Utilizando el .Rdata que el pipeline de nf-core/rnaseq generó, se realizó un análisis de expresión diferencial utilizando el paquete DESeq2. Este análisis permite identificar genes que presentan cambios significativos en su expresión entre las diferentes condiciones del estudio (antes y después del tratamiento con glucocorticoides).
+
+Se utilizo ademas la metadata (Tabla 5-1) para realizar un analisis de expresión diferencial entre las muestras de control y tratamiento con glucocorticoides.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+table <- read.table("metadata.tsv", header = TRUE, sep = "\t")
+knitr::kable(table, format = "markdown", caption = "Tabla 5-1: Metadata de las muestras de control y tratamiento con glucocorticoides (GC)")
+```
+
+Apartir de esto se modifico el objeto dds anteriormente creado con el pipeline de nextflow para que contenga la metadata y que incluya las variables que queremos observar, en este caso el tratamiento y el tipo de muestra. Se utilizo el paquete `DESeq2` para realizar el analisis de expresión diferencial, usando la función `DESeq()` ejecutamos el analisis de expresion diferencial para posteriormente realizar una transformacion de varianza estabilizada (VST), es una técnica que ajusta los datos para hacer que la varianza sea más homogénea entre diferentes niveles de expresión.
+
+Para identificar patrones en los datos, se realizó un análisis de componentes principales (PCA) sobre la matriz normalizada. El PCA es una técnica estadística que reduce la dimensionalidad de los datos y permite visualizar la variabilidad en las muestras. Se utilizaron las variables `Type` (tratamiento) y `Condition` (La condición de la piel) para observar cómo se distribuyen las muestras en el espacio de componentes principales.
+
+![Figura 5-1: La figura muestra un Análisis de Componentes Principales (PCA) basado en datos transformados mediante VST (Variance Stabilizing Transformation), donde los puntos representan muestras clasificadas según la condición de la piel y el tipo de tratamiento. La condición de la piel se indica con colores: rojo para piel saludable, verde para piel con lesión y azul para piel no lesionada, mientras que el tipo de muestra se diferencia por la forma: círculos para controles y triángulos para muestras tratadas con glucocorticoides. Las distribuciones marginales en los ejes permiten observar la variabilidad y agrupamiento de las muestras en los primeros dos componentes principales (PC1 y PC2). En cuanto a la distribución según el tratamiento, se observa que las muestras tratadas con glucocorticoides (triángulos) tienden a agruparse en valores positivos de PC2, mientras que las muestras de control (círculos) están distribuidas en un rango más amplio de PC2, con una mayor presencia en valores negativos. Esto sugiere que el tratamiento con glucocorticoides está asociado con una variabilidad específica capturada en PC2, diferenciándose de las muestras de control en esta dimensión del espacio de componentes principales. Además se observa que las muestras saludables (rojo) tienden a agruparse en valores positivos de PC1, mientras que las muestras lesionadas (verde) y no lesionadas (azul) se concentran en valores negativos de PC1, con una mayor superposición entre estas dos últimas, lo que sugiere que las muestras lesionadas y no lesionadas son más similares entre sí en este espacio de representación que respecto a las muestras saludables.
+](results/figures/PCA_vsdata.png)
+
+
+<br>
+
+Los resultados de la funcion `results()` del paquete `DESeq2` nos permiten observar los genes que presentan cambios significativos en su expresión entre las diferentes condiciones del estudio (antes y después del tratamiento con glucocorticoides). 
+<div style="border: 2px solid #9F2142; border-radius: 10px; padding: 10px; margin: 15px;">
+
+```{}
+out of 50781 with nonzero total read count
+adjusted p-value < 0.1
+LFC > 0 (up)       : 661, 1.3%
+LFC < 0 (down)     : 667, 1.3%
+outliers [1]       : 672, 1.3%
+low counts [2]     : 30935, 61%
+(mean count < 6)
+[1] see 'cooksCutoff' argument of ?results
+[2] see 'independentFiltering' argument of ?results
+```
+<div style="text-align:center; text-size: 10;">Chunk 1: Se identificaron un total de 1.328 genes (661 sobreexpresados + 667 subexpresados) que muestran cambios significativos en respuesta al tratamiento con glucocorticoides. 672 genes fueron atipicos, estos son genes que mostraron patrones de expresión extremos o inconsistentes. El 61% restante corresponde a genes con conteos bajos, lo que indica que no se detectaron suficientes lecturas para realizar un análisis confiable de su expresión.</div>
+</div>
+La cantidad de genes diferencialmente expresados se puede ver de una mejor manera en el volcano plot (Figura 5-2).
+
+![Figura 5-2: Volcano plot que muestra la relación entre el log2 del cociente de las medias de expresión (log2FoldChange) y el valor p ajustado (-log10(padj)) para los genes analizados. Los puntos en la parte derecha representa a los genes sobreexpresados, mientras que la parte izquierda son los genes subexpresados. El color gris representa la insignificancia de los genes.](results/figures/VolcanoPlotGCvsControl.png)
+
+
+<br>
+Viendo esto podemos hacer un heatmap (Figura 5-3) para identificar cuales son los genes que se encuentran sobreexpresados y subexpresados en las muestras tratadas con glucocorticoides. 
+En los resultados coinciden con la idea de que los glucocorticoides tienen un efecto antiinflamatorio, ya que se observa una disminución en la expresión de genes relacionados con la inflamación y la respuesta inmune. Los que vamos a tomar en cuenta para este reporte son: **GLUL**, **TSC22D3**, **BEST2**, **LAMA2** y **DKK1**.
+
+![Figura 5-3: Heatmap que muestra la expresión de los genes diferencialmente expresados en las muestras tratadas con glucocorticoides. Los colores indican la magnitud de la expresión, donde el rojo representa una mayor expresión y el azul una menor expresión.](results/figures/Heatmap_vsd_topgenes.png)
 
 ## Analisis funcional
 
