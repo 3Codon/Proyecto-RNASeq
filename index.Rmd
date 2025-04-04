@@ -119,9 +119,93 @@ Nosotros usamos el pipeline de nf-core rna-seq, por lo cual tenemos como output 
 
 ## Estructura General
 
-```{r}
-library(fs)
-dir_tree("./Equipo1", recurse = TRUE)
+```
+.
+├── adapters
+│   └── TruSeq3-SE.fa
+├── Analisis
+│   ├── Analisis.Rproj
+│   ├── Data_Visualization.R
+│   ├── DEG_Analysis.R
+│   ├── GOterms_analysis.R
+│   ├── index.Rmd
+│   └── tables
+├── data
+│   ├── metadata.tsv
+│   ├── processed
+│   └── raw
+├── DEG_output
+│   └── deseq2_qc
+├── quality1
+│   └── multiqc_data
+├── quality2
+│   └── multiqc_data
+├── reference
+│   ├── gencode.v47.annotation.gtf.gz
+│   └── hg38.fa -> /mnt/Archives/genome/human/GRCh38/UCSC/chromosomes/hg38.fa
+├── results
+│   ├── Analisis_diferencial
+│   ├── fastp
+│   ├── fastqc
+│   ├── multiqc
+│   ├── pipeline_info
+│   └── star_salmon
+├── SALMON_index
+│   ├── complete_ref_lens.bin
+│   ├── ctable.bin
+│   ├── ctg_offsets.bin
+│   ├── duplicate_clusters.tsv
+│   ├── info.json
+│   ├── mphf.bin
+│   ├── pos.bin
+│   ├── pre_indexing.log
+│   ├── rank.bin
+│   ├── refAccumLengths.bin
+│   ├── ref_indexing.log
+│   ├── reflengths.bin
+│   ├── refseq.bin
+│   ├── seq.bin
+│   └── versionInfo.json
+├── SALMON_output
+│   ├── salmon.merged.gene_counts_length_scaled.rds
+│   ├── salmon.merged.gene_counts_length_scaled.tsv
+│   ├── salmon.merged.gene_counts.rds
+│   ├── salmon.merged.gene_counts_scaled.rds
+│   ├── salmon.merged.gene_counts_scaled.tsv
+│   ├── salmon.merged.gene_counts.tsv
+│   ├── salmon.merged.gene_lengths.tsv
+│   ├── salmon.merged.gene_tpm.tsv
+│   ├── salmon.merged.transcript_counts.rds
+│   ├── salmon.merged.transcript_counts.tsv
+│   ├── salmon.merged.transcript_lengths.tsv
+│   ├── salmon.merged.transcript_tpm.tsv
+│   └── tx2gene.tsv
+├── scripts
+│   ├── cache
+│   ├── jobs
+│   ├── out_logs
+│   ├── r_scripts
+│   ├── samplesheet.csv
+│   └── work
+├── STAR_index
+│   ├── chrLength.txt
+│   ├── chrNameLength.txt
+│   ├── chrName.txt
+│   ├── chrStart.txt
+│   ├── exonGeTrInfo.tab
+│   ├── exonInfo.tab
+│   ├── geneInfo.tab
+│   ├── Genome
+│   ├── genomeParameters.txt
+│   ├── Log.out
+│   ├── SA
+│   ├── SAindex
+│   ├── sjdbInfo.txt
+│   ├── sjdbList.fromGTF.out.tab
+│   ├── sjdbList.out.tab
+│   └── transcriptInfo.tab
+├── STAR_output
+└── TRIM_results
 ```
 
 # Diagrama de flujo
