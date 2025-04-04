@@ -439,6 +439,34 @@ En los resultados coinciden con la idea de que los glucocorticoides tienen un ef
 
 ## Analisis funcional
 
+Para comprobar las funciones de los genes se realizó un análisis funcional utilizando el paquete `gprofiler2`, que permite realizar un análisis de enriquecimiento funcional y obtener información sobre los procesos biológicos, vías metabólicas y funciones moleculares asociadas a los genes diferencialmente expresados.
+
+Los resultados del análisis funcional se presentan en la Figura 6-1, donde se observa que los genes diferencialmente sobreexpresados están relacionados con procesos biológicos.
+
+
+Se usa `gost()` para realizar el análisis de sobre-representación de términos de Gene Ontology (GO:BP, GO:CC, GO:MF), rutas de KEGG, Reactome (REAC) y bases de datos adicionales como WP, TF, MIRNA, CORUM, HP y HPA.
+
+Se almacenan los términos enriquecidos para genes up- y down-regulated.
+
+Gráfico Manhattan (Figura 6-1c): Se genera una imagen de dispersión (Manhattan plot) con los términos enriquecidos y su significancia (p-value).
+
+Barplot de genes Down-regulated(Figura 6-1d): Se grafican los 40 términos más enriquecidos para genes subexpresados.
+
+Barplot de genes Up-regulated(Figura 6-1a): Se grafican los 40 términos más enriquecidos para genes sobreexpresados.
+
+
+![a](results/figures/barplotUP_GO_GCvsControl.png)
+
+![b](results/figures/barplotDOWN_GO_GCvsControl.png)
+
+![c Figura 6-1: Enriquecimiento funcional de genes diferencialmente expresados (GC vs. Control). GO:BP (naranja) domina el análisis, destacando procesos inmunológicos y migración celular. KEGG (rosa) y REAC (azul) resaltan vías de señalización de citoquinas y quimiotaxis, mientras que WP (morado) aporta vías complementarias.](results/figures/ManhattanGO_GCvsControl.png)`
+
+Ademas se realizo una visualizacion de la via de señalizacion de IL-17 que se caracteriza principalmente por la activacion de la via de NF-kB y MAPK, lo que lleva a la produccion de citoquinas proinflamatorias como IL-6, IL-8 y TNF-alfa. Esta via es importante en la patogenesis de la psoriasis, ya que se ha demostrado que los glucocorticoides pueden inhibir la activacion de esta via y reducir la inflamacion en la piel.
+
+Utilizando el paquete `pathview`, se generó una visualización de la vía de señalización de IL-17 (Figura 6-2). Esta vía es relevante en la psoriasis, ya que se ha demostrado que los glucocorticoides pueden inhibir su activación y reducir la inflamación en la piel.
+
+![Figura 6-2: Visualización de la vía de señalización de IL-17. Los genes diferencialmente expresados se resaltan en la vía, mostrando su regulación positiva(Rojo) o negativa(Verde).](results/figures/hsa04657.pathview.png)
+
 # Discusión
 
 # Citas y referencias

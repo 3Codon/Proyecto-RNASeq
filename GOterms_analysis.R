@@ -21,9 +21,9 @@ library(tidyverse)
 library(dplyr)
 
 # --- Definir directorios de entrada y salida ---
-indir <- "/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/"
-outdir <- "/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/"
-figdir <- '/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/figures/'
+indir <- "/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/Analisis_diferencial/"
+outdir <- "/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/Analisis_diferencial/"
+figdir <- '/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/Analisis_diferencial/figures/'
 
 # --- Definir bases de datos para análisis de términos GO ---
 sources_db <- c("GO:BP", "KEGG", "REAC", "TF", "MIRNA", "CORUM", "HP", "HPA", "WP")
@@ -120,3 +120,31 @@ g.up <- ggplot(bar_data_up, aes(p.val, reorder(term, -num), fill = category)) +
   scale_fill_manual(name='Category', labels = unique(bar_data_up$label), values = unique(bar_data_up$colors)) +
   theme_classic()
 ggsave(paste0(figdir, "barplotUP_GO_", plot_name, ".png"), plot = g.up, dpi = 600, width = 10, height = 5)
+
+kegg_gene_list <- df$log2FoldChange
+names(kegg_gene_list) <- rownames(df)
+
+library(org.Hs.eg.db)
+library(AnnotationDbi)
+
+entrez_ids <- mapIds(org.Hs.eg.db, keys = names(kegg_gene_list),
+                     column = "ENTREZID", keytype = "ENSEMBL", multiVals = "first")
+
+kegg_gene_list <- kegg_gene_list[!is.na(entrez_ids)]
+names(kegg_gene_list) <- entrez_ids[!is.na(entrez_ids)]
+
+library(pathview)
+
+kegg_organism <- "hsa"
+pathway_id <- "hsa04657"
+
+# Generar el gráfico nativo KEGG (PNG)
+pv_out <- pathview(gene.data = kegg_gene_list,
+                   pathway.id = pathway_id,
+                   species = kegg_organism)
+
+# Generar una versión alternativa en PDF (opcional)
+pv_out_pdf <- pathview(gene.data = kegg_gene_list,
+                       pathway.id = pathway_id,
+                       species = kegg_organism,
+                       kegg.native = FALSE)

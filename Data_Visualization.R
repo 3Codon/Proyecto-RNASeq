@@ -22,16 +22,17 @@ rm(list = ls())
 library(dplyr)
 library(pheatmap)
 library(ggplot2)
+library(DESeq2) 
 
 # Definir directorio de figuras
-figdir <- '/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/figures/'
+figdir <- '/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/Analisis_diferencial/figures/'
 
 # Cargar datos procesados previamente en DEG_analysis.R
-load("/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/dds_TypesnCondition.RData")  # Variable "dds"
-load("/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/vst_TypesnCondition.RData")  # Variable "vsdata"
+load("/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/Analisis_diferencial/dds_TypesnCondition.RData")  # Variable "dds"
+load("/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/Analisis_diferencial/vst_TypesnCondition.RData")  # Variable "vsdata"
 
 # Cargar resultados de análisis diferencial
-DE_GCvsControl <- read.csv("/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/DE_GCvsControl.csv")
+DE_GCvsControl <- read.csv("/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results/Analisis_diferencial/DE_GCvsControl.csv")
 
 df <- as.data.frame(DE_GCvsControl)
 
