@@ -115,13 +115,22 @@ Otro hallazgo relevante fue la regulación de MERTK, un receptor tirosina quinas
 
 # Buenas practicas de Bioinformática
 
+Nosotros usamos el pipeline de nf-core rna-seq, por lo cual tenemos como output muchos tipos de resultados. Tenemos varias carpetas, cada una con un proposito específico. Serán epxlicadas a continuación:
+
+## Estructura General
+
+```{r}
+library(fs)
+dir_tree("./Equipo1", recurse = TRUE)
+```
+
 # Diagrama de flujo
 
 # Resultados
 
 ## Calidad de secuencias
 
-### Secuencias Crudas 
+### Secuencias Crudas
 
 ![](images/clipboard-3184264068.png)
 
@@ -147,7 +156,7 @@ Otro hallazgo relevante fue la regulación de MERTK, un receptor tirosina quinas
 
 ![](images/clipboard-15205712.png)
 
-##  Limpieza de adaptadores
+## Limpieza de adaptadores
 
 ## Alineamiento de secuencia
 
@@ -162,3 +171,5 @@ Otro hallazgo relevante fue la regulación de MERTK, un receptor tirosina quinas
 # Citas y referencias
 
 <https://www.sciencedirect.com/science/article/pii/S0022202X1931629X>
+
+<https://www.sciencedirect.com/science/article/pii/S0040816621000859>
