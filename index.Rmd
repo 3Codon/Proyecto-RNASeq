@@ -591,6 +591,16 @@ Esta carpeta contiene los scripts de R que usamos para hacer el análisis difere
 
 ## Alineamiento de secuencia
 
+Los resultados del alineamiento de secuencia fueron los siguientes
+
+```{r}
+table <- read.table("resumen_STAR_metrics.tsv", header = TRUE, sep = "\t")
+
+table <- table[,-c(22:33)]
+
+knitr::kable(table, format = "markdown", caption = "Tabla 3-1: Resumen de alineamiento")
+```
+
 ## Predicción de cuentas
 
 ## Expresión diferencial
