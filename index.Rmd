@@ -6,20 +6,92 @@ output:
   rmdformats::readthedown
 ---
 
-| Descripcion | Informacion |
-|------------------------------------|------------------------------------|
-| Bioproject | [PRJNA494527](https://www.ebi.ac.uk/ena/browser/view/PRJNA494527) |
-| Especie | *Homo Sapiens* |
-| Tipo de biblioteca | sinlge-end |
-| Metodo | ARN-Total |
-| Numero de transcriptomas | 34 |
-| Numero de replicas | 17 Replicas biologicas, con una replica tecnica por cada una ( Control y Firma génica inducida por glucocorticoides en la piel humana) |
-| Secuenciador Empleado | Ilumina NextSeq500 |
-| Profundidad de secuenciacion de cada transcriptoma | 12M a 40M |
-| Tamaño de las lecturas | 75bp |
-| Articulo Cientifico | Sarkar MK, Kaplan N, Tsoi LC, Xing X et al. Endogenous Glucocorticoid Deficiency in Psoriasis Promotes Inflammation and Abnormal Differentiation. J Invest Dermatol 2017 Jul;137(7):1474-1483. PMID: 28259685 Los datos se pueden descargar desde NCBI o usando ENA. |
+# Descripción de los datos
 
-## Abstract
+## Equipo: #1
+
+-   Integrantes:
+-   Emiliano Ferro Rodríguez (eferro)
+-   Jorge Alfredo Suazo Victoria (jsuazo)
+-   Sofia Gamino Estrada (sgamino)
+
+## Correos electrónicos de los integrantes:
+
+-   Ferro: [emiferro\@comunidad.unam.mx](mailto:emiferro@comunidad.unam.mx)
+-   Suazo: [jasvpj\@gmail.com](mailto:jasvpj@gmail.com)
+-   Sofia: [ghobibohg\@gmail.com](mailto:ghobibohg@gmail.com)
+
+## Descripción de los datos:
+
+-   Bioproject: [PRJNA494527](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120783)
+
+-   Especie: *Homo sapiens*
+
+-   Tipo de bibliotecas: Single-end
+
+-   Método de selección: Total RNA
+
+-   Número de transcriptomas: 34
+
+-   Numero de replicas: 17 Replicas biologicas, con una replica tecnica por cada una ( Control y Firma génica inducida por glucocorticoides en la piel humana)
+
+-   Secuenciador empleado: **Illumina NextSeq 500**
+
+-   Distribución de las muestras: Control: 17 replicas de biopsias de piel de perforación de espesor completo (`SRX4792843, SRX479284, - - SRX4792847, SRX4792849, SRX4792851, SRX4792853, SRX4792855, SRX4792857, SRX4792859, SRX4792861, SRX4792863, SRX4792865, SRX4792867, SRX4792869, SRX4792871, SRX4792873, SRX4792876`)
+
+-   Tratamiento: 17 muestras provientes de biopsias de piel tratadas con glucocorticoides (SRX4792844, SRX4792846, SRX4792848, SRX4792850, SRX4792852, SRX4792854, SRX4792856, SRX4792858, SRX4792860, SRX4792862, SRX4792864, SRX4792866, SRX4792868, SRX4792870, SRX4792872, SRX4792874, SRX4792875)
+
+-   Profundidad de secuenciación de cada transcriptoma:
+
+-   Control:
+
+| Muestra    | Profundidad |
+|------------|-------------|
+| SRX4792843 | 21.3M       |
+| SRX479284  | 17.6M       |
+| SRX4792847 | 27.3M       |
+| SRX4792849 | 25.1M       |
+| SRX4792851 | 19M         |
+| SRX4792853 | 31.5M       |
+| SRX4792855 | 12.6M       |
+| SRX4792857 | 12.2M       |
+| SRX4792859 | 11.5M       |
+| SRX4792861 | 36.2M       |
+| SRX4792863 | 26M         |
+| SRX4792865 | 24.7M       |
+| SRX4792867 | 31.4M       |
+| SRX4792869 | 27M         |
+| SRX4792871 | 27.2M       |
+| SRX4792873 | 28.9M       |
+| SRX4792876 | 26.6M       |
+
+-   Tratamiento:
+
+| Muestra    | Profundidad |
+|------------|-------------|
+| SRX4792844 | 31.7M       |
+| SRX4792846 | 29.3M       |
+| SRX4792848 | 20.9M       |
+| SRX4792850 | 40.7M       |
+| SRX4792852 | 29.3M       |
+| SRX4792854 | 23.6M       |
+| SRX4792856 | 12.5M       |
+| SRX4792858 | 13.5M       |
+| SRX4792860 | 13.1M       |
+| SRX4792862 | 24.6M       |
+| SRX4792864 | 27.3M       |
+| SRX4792866 | 29.4M       |
+| SRX4792868 | 31.3M       |
+| SRX4792870 | 24.1M       |
+| SRX4792872 | 23.5M       |
+| SRX4792874 | 24.6M       |
+| SRX4792875 | 23.5M       |
+
+-   Tamaño de las lecturas: 75 pb
+
+-   Artículo científico: Sarkar MK, Kaplan N, Tsoi LC, Xing X et al. Endogenous Glucocorticoid Deficiency in Psoriasis Promotes Inflammation and Abnormal Differentiation. J Invest Dermatol 2017 Jul;137(7):1474-1483. PMID: [28259685](https://pubmed.ncbi.nlm.nih.gov/28259685/) Los datos se pueden descargar desde [NCBI](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120783) o usando [ENA](https://www.ebi.ac.uk/ena/browser/view/PRJNA494527?show=publications).
+
+# Abstract
 
 En este estudio, comparamos la expresión génica en pacientes con psoriasis en tres tipos de muestras de piel: sana, lesional y no lesional. Además, analizamos los cambios en la expresión génica antes y 24 horas después del tratamiento con glucocorticoides para evaluar su impacto a corto plazo.
 
@@ -40,3 +112,53 @@ Los análisis de expresión diferencial revelaron que el tratamiento con glucoco
 Uno de los genes más regulados por los glucocorticoides fue TSC22D3, el cual desempeña un papel clave en la respuesta inmune y la diferenciación celular, sugiriendo su importancia en la acción del tratamiento.
 
 Otro hallazgo relevante fue la regulación de MERTK, un receptor tirosina quinasa implicado en la resolución de la inflamación crónica, lo que refuerza su posible papel en la modulación de la psoriasis.
+
+# Buenas practicas de Bioinformática
+
+# Diagrama de flujo
+
+# Resultados
+
+## Calidad de secuencias
+
+### Secuencias Crudas 
+
+![](images/clipboard-3184264068.png)
+
+![](images/clipboard-4021843613.png)
+
+![](images/clipboard-4236530129.png)
+
+![](images/clipboard-3539655336.png)
+
+![](images/clipboard-2910841059.png)
+
+![](images/clipboard-263100148.png)
+
+![](images/clipboard-63839139.png)
+
+![](images/clipboard-3338401574.png)
+
+![](images/clipboard-546568783.png)
+
+### Secuencias Procesadas
+
+![](images/clipboard-3592789900.png)
+
+![](images/clipboard-15205712.png)
+
+##  Limpieza de adaptadores
+
+## Alineamiento de secuencia
+
+## Predicción de cuentas
+
+## Expresión diferencial
+
+## Analisis funcional
+
+# Discusión
+
+# Citas y referencias
+
+<https://www.sciencedirect.com/science/article/pii/S0022202X1931629X>
