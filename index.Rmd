@@ -113,101 +113,244 @@ Uno de los genes más regulados por los glucocorticoides fue TSC22D3, el cual de
 
 Otro hallazgo relevante fue la regulación de MERTK, un receptor tirosina quinasa implicado en la resolución de la inflamación crónica, lo que refuerza su posible papel en la modulación de la psoriasis.
 
-# Buenas practicas de Bioinformática
+# Buenas prácticas de Bioinformática
 
-Nosotros usamos el pipeline de nf-core rna-seq, por lo cual tenemos como output muchos tipos de resultados. Tenemos varias carpetas, cada una con un proposito específico. Serán epxlicadas a continuación:
+Nosotros usamos **nf-core rnaseq**, por lo cual la estructura de nuestras carpetas cambiará un poco, pero explicaremos cada una para que no queden dudas.
 
-## Estructura General
+## Estructura general
 
 ```         
-.
 ├── adapters
 │   └── TruSeq3-SE.fa
-├── Analisis
-│   ├── Analisis.Rproj
-│   ├── Data_Visualization.R
-│   ├── DEG_Analysis.R
-│   ├── GOterms_analysis.R
-│   ├── index.Rmd
-│   └── tables
 ├── data
 │   ├── metadata.tsv
-│   ├── processed
 │   └── raw
 ├── DEG_output
 │   └── deseq2_qc
+│       ├── deseq2.dds.RData
+│       ├── deseq2.pca.vals.txt
+│       ├── deseq2.plots.pdf
+│       ├── deseq2.sample.dists.txt
+│       ├── R_sessionInfo.log
+│       └── size_factors
 ├── quality1
-│   └── multiqc_data
+│   ├── multiqc_data
+│   ├── multiqc_report.html
+│   ├── SRR7959221_fastqc.zip
+│   ├── SRR7959222_fastqc.html
+│   └── ...
 ├── quality2
-│   └── multiqc_data
+│   ├── aaF1_fastqc.html
+│   ├── aaF1_fastqc.zip
+│   ├── ...
+│   ├── multiqc_data
+│   └── multiqc_report.html
 ├── reference
 │   ├── gencode.v47.annotation.gtf.gz
 │   └── hg38.fa -> /mnt/Archives/genome/human/GRCh38/UCSC/chromosomes/hg38.fa
 ├── results
 │   ├── Analisis_diferencial
+│       ├── dds_TypesnCondition.RData
+│       ├── DE_GCvsControl.csv
+│       ├── DE_LesionalGC.csv
+│       ├── DE_LesionalvsHealthy.csv
+│       ├── DE_NonlesionalGC.csv
+│       ├── DE_NonLesionalvsHealthy.csv
+│       ├── DOWN_GO_GCvsControl.RData
+│       ├── figures
+│       ├── UP_GO_GCvsControl.RData 
+│       └── vst_TypesnCondition.RData
 │   ├── fastp
+│       ├── aaF1.fastp.html
+│       ├── aaF1.fastp.json
+│       ├── ...
+│       └── log
+│           ├── aaF1.fastp.log
+│           └── ...
 │   ├── fastqc
+│       ├── aaF1_fastqc.html
+│       ├── aaF1_fastqc.zip
+│       ├── ...
+│       └── raw
+│           ├── aaF1_GC_raw_fastqc.html
+│           └── ...
 │   ├── multiqc
+│       └── star_salmon
+│           ├── multiqc_report_data
+│           ├── multiqc_report.html
+│           └── multiqc_report_plots
 │   ├── pipeline_info
+│       ├── execution_report_2025-03-25_20-19-09.html`
+│       ├── execution_timeline_2025-03-25_20-19-09.html
+│       ├── execution_trace_2025-03-25_20-19-09.txt
+│       ├── params_2025-03-25_23-40-42.json
+│       ├── pipeline_dag_2025-03-25_20-19-09.html
+│       ├── samplesheet.valid.csv
+│       └── software_versions.yml
 │   └── star_salmon
+│       ├── aaF1_GC
+│           ├── aux_info
+│           ├── cmd_info.json
+│           ├── libParams
+│           ├── logs
+│           ├── quant.genes.sf
+│           └── quant.sf
+│       ├── aaF1_GC.markdup.sorted.bam
+│       ├── aaF1_GC.markdup.sorted.bam.bai
+│       ├── ...
+│       ├── log
+│       ├── picard_metrics
+│       ├── qualimap
+│       ├── rseqc
+│       ├── salmon.merged.gene_counts* #Con esto me refiero a que hay varios archivos de cuentas de salmon.
+│       ├── samtools_stats
+│       ├── stringtie
+│       └── tx2gene.tsv
 ├── SALMON_index
-│   ├── complete_ref_lens.bin
-│   ├── ctable.bin
-│   ├── ctg_offsets.bin
-│   ├── duplicate_clusters.tsv
-│   ├── info.json
-│   ├── mphf.bin
-│   ├── pos.bin
-│   ├── pre_indexing.log
-│   ├── rank.bin
-│   ├── refAccumLengths.bin
-│   ├── ref_indexing.log
-│   ├── reflengths.bin
-│   ├── refseq.bin
-│   ├── seq.bin
-│   └── versionInfo.json
 ├── SALMON_output
-│   ├── salmon.merged.gene_counts_length_scaled.rds
-│   ├── salmon.merged.gene_counts_length_scaled.tsv
-│   ├── salmon.merged.gene_counts.rds
-│   ├── salmon.merged.gene_counts_scaled.rds
-│   ├── salmon.merged.gene_counts_scaled.tsv
+│   ├── aaF1
+│       ├── aux_info
+│       ├── cmd_info.json
+│       ├── libParams
+│       ├── logs
+│       ├── quant.genes.sf
+│       └── quant.sf
+│   ├── ... #Las otras carpetas también son por cada muestra, y son exactamente iguales a la anterior
 │   ├── salmon.merged.gene_counts.tsv
-│   ├── salmon.merged.gene_lengths.tsv
-│   ├── salmon.merged.gene_tpm.tsv
-│   ├── salmon.merged.transcript_counts.rds
-│   ├── salmon.merged.transcript_counts.tsv
-│   ├── salmon.merged.transcript_lengths.tsv
-│   ├── salmon.merged.transcript_tpm.tsv
+│   ├── salmon.merged.*   # Con el * nos referimos a que hay varios archivos que son de las cuentas de salmon.
 │   └── tx2gene.tsv
 ├── scripts
 │   ├── cache
+│       ├── .nextflow
+│       ├── .singularity
+│       ├── .singularitynxf
+│       ├── .singularitytmp
+│       └── .work
 │   ├── jobs
+│       ├── download_data.sge
+│       ├── fastqcs_raw.sge
+│       ├── job_quality_raw.sge
+│       └── nextflow_rna_seq_fastp.sge
 │   ├── out_logs
+│       ├── Download_data.o978805
+│       ├── Download_data.po978805
+│       └── nextflow_test1.o988120
 │   ├── r_scripts
+│       ├── Analisis.Rproj
+│       ├── Data_Visualization.R
+│       ├── DEG_Analysis.R
+│       ├── GOterms_analysis.R
+│       ├── index.html
+│       ├── index.Rmd
+│       ├── results.zip
+│       ├── .Rhistory
+│       ├── .Rproj.user
+│       └── tables
 │   ├── samplesheet.csv
 │   └── work
+│       ├── 00
+│       ├── ...       # El resto son igual, son directorios aislados donde se ejecutan los procesos.
 ├── STAR_index
-│   ├── chrLength.txt
-│   ├── chrNameLength.txt
-│   ├── chrName.txt
-│   ├── chrStart.txt
-│   ├── exonGeTrInfo.tab
-│   ├── exonInfo.tab
-│   ├── geneInfo.tab
-│   ├── Genome
-│   ├── genomeParameters.txt
-│   ├── Log.out
-│   ├── SA
-│   ├── SAindex
-│   ├── sjdbInfo.txt
-│   ├── sjdbList.fromGTF.out.tab
-│   ├── sjdbList.out.tab
-│   └── transcriptInfo.tab
 ├── STAR_output
+│   ├── aaF1_GC.markdup.sorted.bam
+│   ├── aaF1_GC.markdup.sorted.bam.bai
+│   └──  ...  # Los demás archivos son los mismo pero para las demás muestras.
 └── TRIM_results
+    ├── aaF1_GC.fastp.fastq.gz
+    └── ... # Los demás fastqs procesados.
 ```
 
+### Adapters
+
+En esta carpeta está vacia porque **fastp detecta los adaptadores automaticamente**, por lo cual no había necesidad de descargarlos de internet.
+
+### Data
+
+Aquí tenemos nuestros datos crudos de las muestras, así como los metadastos de estas.
+
+-   `metadata.tsv` : Son los metadatos
+
+-   `raw` : Aqui van los fastqs de las muestras sin procesar.
+
+### DEG_output
+
+Aquí se encuentra la información de los genes diferencialmente expresados. Para hacerlo, nf-core uso **DESeq2**.
+
+-   `deseq2.pca.vals.txt`\`: Son los valores asignados en el PCA a cada muestra.
+
+-   `deseq2.plots.pdf`\`: Aquí encontramos las gráficas creadas por deseq2 en donde se hacen PCAs de las muestras en donde se toman en cuenta los 500 genes más importantes, y con todos los genes. También encontramos un heatmap de las distancias euclideanas entre las muestras según los genes diferencialmente expresados.
+
+-   `deseq2.sample.dists.txt`\`: Aquí estan las distancias euclideanas entre muestras.
+
+-   `deseq2.dds.RData`\`: Este es un objeto de deseq que usamos el el análisis diferencial.
+
+-   `size_factors`\`: Esta es una carpeta donde se encuentran los pesos de cada muestra para que la diferencia en reads no afecte el análisis diferencial. Ref: <https://www.biostars.org/p/359060/>
+
+### quality1
+
+Aquí estan los fastqc de las muestras crudas, sin procesar. Hay un fastqc.html y un fastqc.zip por muestra, y un multiqc que abarca todas las muestras.
+
+-   Lo que **no salió del pipeline de nf-core rnaseq son los datos de multiqc**, esos fueron creados por nosotros aparte.
+
+### quality2
+
+Aquí estan los fastqc de las muestras procesadas con fastp. Hay un fastqc.html y un fastqc.zip por muestra, y un multiqc que abarca todas las muestras. Es importante mencionar que estos fastqc **salieron del pipeline de nf-core rnaseq**, y aparte que nuestras muestras crudas parecian no tener adaptadores.
+
+-   Lo que **no salió del pipeline de nf-core rnaseq son los datos de multiqc**, esos fueron creados por nosotros aparte.
+
+### reference
+
+En esta carpeta cargamos el archivo GTF del genoma humanohg38.fa, de ensembl. También añadimos la ruta al fasta del genoma humano.
+
+### results
+
+Esta es una carepta muy amplia, que contiene todos los outputs del pipeline de nf-core rnaseq. Se explicará cada output bervemente a continuación:
+
+#### Analisis_Diferencial
+
+Esta es la única carpeta que no proviene del pipeline de nf-core, y que fue creada por nosotros para poner los outputs (figuras, csvs) del análisis diferencial que hicimos en R.
+
+#### fastp
+
+Esta carpeta contiene el análisis de fastp de cada muestra, así como sus logs y fastqc.
+
+-   Fastp nos da un html que nos puede ayudar a medir la calidad de nuestros datos, muy parecido a fastqc. Estos estan en el formato muestra.fastp.html y muestra.fastp.json.
+-   La otra carpeta es `log` . Esta carpeta contiene toda la información de como fue el procesado de cada muestra (número de reads debajo de un threshold de calidad, reads totales, etc), y tiene la estructura muestra.log.
+-   Por último, tenemos una carpeta `fastqc`\`, donde están los fastqcs de las muestras procesadas por fastp. **Estos fastqc son los que pusimos en la carpeta quality2**.
+
+#### fastqc
+
+Esta carpeta es un poco parecida a la de fastp, solo que se centra en los fastqc. Al entrar, tienes los mismos fastqc procesados por fastp que se mencionaron en la viñeta anterior (son los mismos que están en quality2), pero también tenemos la carpeta `raw`\`.
+
+-   En la carpeta `raw`\`tenemos los fastqcs pero de los datos crudos. **Estos son los fastqcs que están en la carpeta quality1**, y tienen la estructura muestra.fastqc.html y muestra.fastqc.zip
+
+#### multiqc
+
+En esta carpeta tenemos un multiqc creado por **nf-core** que resume los datos provenientes de la carepta **star_salmon**.
+
+-   `star_salmon/multiqc_report_data`\`: Aquí están los datos con los que se creó el multiqc. Provienen de los resultados de star_salmon.
+
+-   `star_salmon/multiqc_report.html`\`: Este es el reporte que se puede abrir en tu navegador.
+
+-   `star_salmon/multiqc_report_plots`\`: Estos son los plots que aparecen en el reporte.
+
+#### pipeline_info
+
+Esta carpeta es muy útil, ya que **nos permite saber como es que el pipeline de nf-core rnaseq progresó**. Aquí podemos ver errores, warnings, y también el directorio de `work`\`donde se realizaron los procesos, para cada uno.
+
+-   `execution_report_2025-03-25_20-19-09.html`\`: Este html nos da un reporte general de como fue el pipeline. Si hay errores o el pipe fue exitoso, se puede checar aquí. También se peude checar el uso de memoria por proceso.
+
+-   `execution_timeline_2025-03-25_20-19-09.html`\`: Este es muy similar al anterior, solo que nos da una linea del tiempo.
+
+-   `execution_trace_2025-03-25_20-19-09.txt`\`: Este es un archivo **vital**, ya que nos permite saber **donde (nos da un directorio de la carpeta work) y cuando se realizó cada proceso del pipeline de nf-core, así como su progresión (para saber si hubieron errores)**.
+
+-   `samplesheet.valid.csv`\`: Esta solo es una copia del samplesheet que hicimos (se mencionara más adelante).
+
+#### star_salmon
+
+Esta es la carpeta con más información de todos los resultados de nextflow, ya que aquí podemos encontrar los resultados de la ejecución de los programas **Salmon** y **STAR**. También están aquí los resultados de **DESeq2**, así como muchas otras métricas que nos dan más información del estado de las reads de cada muestra.
+
+-   Vas a observar una carpeta por cada
 # Diagrama de flujo
 
 # Resultados
