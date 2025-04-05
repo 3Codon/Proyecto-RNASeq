@@ -49,8 +49,10 @@ library(AnnotationDbi)
 library(tree)
 ```
 # Pipeline
-## Elección de datos
 ![](images/Diagrama_de_flujo_RNASeq.png)
+
+
+## Elección de datos
 
 Para elegir los datos primero se piensa en el organismo con el que se va a tratar en este caso escogimos al *Homo sapiens* (Humano)
 
