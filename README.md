@@ -64,3 +64,48 @@ Utilizamos el pipeline nf-core/rnaseq basado en Nextflow, una herramienta recono
 
 El pipeline requiere tan solo un archivo CSV (samplesheet.csv) que especifica los nombres de las muestras y la ubicación de los archivos FASTQ, simplificando la integración de datos experimentales. Además, se incorpora el genoma de referencia hg38 de Ensembl, lo que proporciona una base robusta para el alineamiento y análisis transcriptómico.
 
+En este pipeline se realizan diversos procesos, segun la pagina [nf-core/rnaseq/3.12.0](https://nf-co.re/rnaseq/3.12.0/) hace lo siguiente: 
+
+- Fusionar archivos FastQ re-secuenciados (cat)
+
+- Sub-muestrear archivos FastQ e inferir automáticamente la polaridad (fq, Salmon)
+
+- Control de calidad de lecturas (FastQC)
+
+- Extracción de UMI (UMI-tools)
+
+- Recorte de adaptadores y calidad (Trim Galore!)
+
+- Eliminación de contaminantes del genoma (BBSplit)
+
+- Eliminación de ARN ribosomal (SortMeRNA)
+
+- Elección de múltiples rutas de alineación y cuantificación:
+
+  - STAR -> Salmon
+  
+- Ordenar e indexar alineamientos (SAMtools)
+
+- Eliminación de duplicados basada en UMI (UMI-tools)
+
+- Marcado de lecturas duplicadas (picard MarkDuplicates)
+
+- Ensamblaje y cuantificación de transcritos (StringTie)
+
+- Creación de archivos de cobertura bigWig (BEDTools, bedGraphToBigWig)
+
+- Control de calidad extenso:
+
+  - RSeQC
+
+  - Qualimap
+
+  - dupRadar
+
+  - Preseq
+
+  - DESeq2
+
+- Pseudo-alineamiento y cuantificación (Salmon)
+
+- Presentación del control de calidad para lecturas crudas, alineamientos, biotipo de genes, similitud entre muestras y verificación de polaridad (MultiQC, R)
