@@ -190,3 +190,5 @@ Utilizamos el lenguaje de programacion R para realizar los siguientes scripts.
 - [nf-core/rna-seq](https://nf-co.re/rnaseq/3.12.0/)
 - [Nextflow](https://www.nextflow.io/)
 - [Singularity](https://docs.sylabs.io/guides/3.7/user-guide/)
+- [Biostars](https://www.biostars.org/p/371979/)
+- [QC Fail](https://sequencing.qcfail.com/articles/positional-sequence-bias-in-random-primed-libraries/)
