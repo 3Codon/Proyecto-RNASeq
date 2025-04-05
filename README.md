@@ -117,6 +117,8 @@ Los outputs que ocupamos mayormente fueron:
 - MultiQC procesado
 - Archivo .Rdata con Objeto de Expresion Diferencial
 
+Para realizar esto se usó el siguiente script
+
 - Script [nextflow_rna_seq_fastp.sge](https://github.com/3Codon/Proyecto-RNASeq/blob/main/jobs/nextflow_rna_seq_fastp.sge)
   - `-r 3.14.0`: Esta opción la usamos para definir la versión de nf-core rnaseq a usar. En nuestro caso, usamos la versión 3.14.0 porque la versión de nextflow más reciente en el cluster es las 23.10,.0 y la versión de nf-core rnaseq más reciente (3.18.0) ocupa la versión 24.10.0 de nextflow.
   - `-profile singularity`: Usamos esta opción para usar el enviorment de singularity, ya que es mucho más fácil usar esto que cargar todos los programas necesarios en el cluster.
