@@ -50,3 +50,4 @@ library(tree)
 ```
 # Pipeline
 
+![](images/Diagrama_de_flujo_RNASeq.png)
