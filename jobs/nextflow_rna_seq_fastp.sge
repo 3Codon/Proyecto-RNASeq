@@ -1,0 +1,50 @@
+#!/bin/bash
+# Use current working directory
+#$ -cwd
+#
+# Join stdout and stderr
+#$ -j y
+#
+# Run job through bash shell
+#$ -S /bin/bash
+#
+#You can edit the scriptsince this line
+#
+# Your job name
+#$ -N nextflow_test1
+#
+# I'm adding sonic speed to my job :) (We need it for this code to run)
+#$ -l vf=120G
+#$ -pe openmp 5
+# Send an email after the job has finished
+#$ -m e
+#$ -M ghobibohg@gmail.com
+#
+# If modules are needed, source modules environment (Do not delete the next line):
+. /etc/profile.d/modules.sh
+#
+# Add any modules you might require:
+module load nextflow/23.10.0
+module load singularity/3.7.0
+#
+# Write your commands in the next line
+
+export NXF_SINGULARITY_CACHEDIR="/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/script/cache/.singularitynxf"
+export SINGULARITY_CACHEDIR="/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/script/cache/.singularity"
+export NXF_HOME="/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/script/cache/.nextflow"
+export SINGULARITY_TMPDIR="/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/script/cache/.singularitytmp"
+export NXF_WORK="/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/script/cache/otro_cache/.work"
+
+nextflow run nf-core/rnaseq -r 3.14.0 \
+	 		 	-profile singularity \ 
+	  		  	 -work-dir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/scripts/work \ 
+	   		   	  --input /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/scripts/samplesheet.csv \ 
+	     		    	   --outdir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo1/results \
+	       		     	    --max_memory '120.GB' \
+			      	     --max_cpus 5 \
+		 	       	      --fasta /mnt/Archives/genome/human/GRCh38/ensembl76/chromosomes/Homo_sapiens.GRCh38.dna.primary_assembly.fa \ 
+		  		       --gtf /mnt/Archives/genome/human/GRCh38/ensembl76/GTF-file/Homo_sapiens.GRCh38.76.gtf \
+		   		 	--trimmer fastp \
+		    		  	 --extra_fastp_args '--cut_front 20' \
+		     		   	  --aligner star_salmon
+

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Nombre de las métricas que quieres extraer (ordenadas)
+metrics=(
+  "Started job on"
+  "Started mapping on"
+  "Finished on"
+  "Mapping speed, Million of reads per hour"
+  "Number of input reads"
+  "Average input read length"
+  "Uniquely mapped reads number"
+  "Uniquely mapped reads %"
+  "Average mapped length"
+  "Number of splices: Total"
+  "Number of splices: Annotated (sjdb)"
+  "Number of splices: GT/AG"
+  "Number of splices: GC/AG"
+  "Number of splices: AT/AC"
+  "Number of splices: Non-canonical"
+  "Mismatch rate per base, %"
+  "Deletion rate per base"
+  "Deletion average length"
+  "Insertion rate per base"
+  "Insertion average length"
+  "Number of reads mapped to multiple loci"
+  "% of reads mapped to multiple loci"
+  "Number of reads mapped to too many loci"
+  "% of reads mapped to too many loci"
+  "Number of reads unmapped: too many mismatches"
+  "% of reads unmapped: too many mismatches"
+  "Number of reads unmapped: too short"
+  "% of reads unmapped: too short"
+  "Number of reads unmapped: other"
+  "% of reads unmapped: other"
+  "Number of chimeric reads"
+  "% of chimeric reads"
+)
+
+# Imprimir encabezado
+echo -ne "File"
+for m in "${metrics[@]}"; do
+    echo -ne "\t$m"
+done
+echo
+
+# Leer cada archivo
+for file in *.Log.final.out; do
+    echo -ne "$file"
+    for m in "${metrics[@]}"; do
+        value=$(grep -F "$m" "$file" | awk -F '|' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+        echo -ne "\t$value"
+    done
+    echo
+done > resumen_STAR_metrics.tsv
