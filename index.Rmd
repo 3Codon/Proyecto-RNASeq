@@ -548,7 +548,8 @@ En esta carpeta se encuentran los fastqs procesados por fastp, con la forma **mu
 
 Esta carpeta contiene los scripts de R que usamos para hacer el análisis diferencial, la visualización de datos y análisis funcional. También contiene un archivo .Rproj, que es un proyecto de RStudio, y un archivo .Rhistory, que guarda el historial de comandos ejecutados en R.
 
-# Diagrama de flujo 
+# Diagrama de flujo
+
 ![](images/Diagrama_de_flujo_RNASeq.png)
 
 # Resultados
@@ -561,11 +562,17 @@ Esta carpeta contiene los scripts de R que usamos para hacer el análisis difere
 
 En este fase del análisis, nos indica los resultados generales de cada fase los resultados generales del ánalisis cada una de las fases de FastQC en cada una de las muestras.
 
-La primera fase que nos muestra el porcentaje de duplicados en cada una de las muestras,
+La primera fase que nos muestra el porcentaje de duplicados en cada una de las muestras, y podemos observar que en las muestras contienen alto porcentaje de duplicados.
+
+Otra fase que podemos observar en este analisis es el porcentaje de CG donde observamos que no hay tanta diferencia entre las muestras, y también podemos observar la fase que nos dice cuantos millones de secuencias se obtuvieron por muestra (M seq), y vemos que en nuestro análisis la cantidad de secuencias que obtuvimos entre cada muestra varía entre 12.6 a 40.7 millones de secuencias.
 
 ![](images/clipboard-4021843613.png)
 
+En la fase Sequence Quality Histograms nos indica que las muestras tienen buena calidad.
+
 ![](images/clipboard-4236530129.png)
+
+En esta fase, nos indica la calidad promedio de cada lectura y cuatas secuencias tienen esa calidad promedio, en esta grafica pocemos ver que tenemos muchas secuecias con una gran calidad
 
 ![](images/clipboard-3539655336.png)
 
@@ -581,9 +588,13 @@ Ver que bacterias o microorganismos tienen las muestras pero no es necesario por
 
 ![](images/clipboard-63839139.png)
 
+Como se mencionó anteriormente podemos observar en esta fase del análisis que las muestras tienen altos niveles de secuencias duplicadas.
+
 ![](images/clipboard-3338401574.png)
 
 ![](images/clipboard-546568783.png)
+
+En esta última fase del análisis de calidad de nuestros fastq podemos observar que las muestras no contienen adaptadores ya que el porcentaje de adaptadores es 0%.
 
 ### Secuencias Procesadas
 
@@ -707,13 +718,17 @@ Por otra parte, nuestro objetivo es encontrar genes diferencialmente expresados 
 Uno de los hallazgos más relevantes que encontramos en nuestro análisis de expresión diferencial (Figura 5-3) fue la sobreexpresión de GLUL en las muestras tratadas con glucocorticoides. Este gen codifica para la enzima glutamina sintetasa, que es responsable de la síntesis de glutamina a partir de glutamato y amoníaco. El glutamato activa los receptores de glutamato en las células inmunitarias (especialmente en las células $T\gamma\delta$). La activación de estos receptores afecta la supervivencia de dichas células y modula los niveles de citoquinas proinflamatorias como la IL-17A, la cual induce inflamación mediante el reclutamiento de neutrófilos, aumentando la respuesta autoinmune, así como la liberación de quimiocinas y péptidos antimicrobianos, como se puede observar en la Figura 6-2. Por lo tanto, la sobreexpresión de GLUL en las muestras tratadas con glucocorticoides podría estar relacionada con la disminución de la inflamación ya que transforma el glutamato en glutamina, impidiendo la produccion de IL-17A.
 Además, en la figura 6-1a se observa que los procesos biológicos asociados con genes sobreexpresados incluyen rutas metabólicas relacionadas con el glutamato y la glutamina. Esto sugiere que el tratamiento con glucocorticoides podría estar modulando la vía de señalización de IL-17A mediante la regulación del metabolismo de aminoácidos.
 
-Otro hallazgo importante fue la sobreexpresión de TSC22D3 (conocida tambien como GLIZ), un gen que codifica para una proteína que actúa como un represor transcripcional de la IL-17 limitando la diferenciacion celular proinflamatoria y esta proteina interactua con otras citoquinas proinflamatorias. GLIZ interfiere con interacciones proteina-proteina con los factores de transcripción NF-kB y AP-1 impidiendo las translocasion nuclear. Ademas GLIZ se una a RAS/RAF y suprimir la via MAPK. Dado que GLIZ al expresarse tiene un papel antiinflamatorio. En nuestros resultados, obtuvimos una sobreexpresion de GLIZ o TSC22D3 sugiriendo que su sobreexpresión podría contribuir a la disminución de la inflamación en las muestras tratadas con glucocorticoides.
+Otro hallazgo importante fue la sobreexpresión de TSC22D3 (conocida tambien como GLIZ), un gen que codifica para una proteína que actúa como un represor transcripcional de la IL-17 limitando la diferenciacion celular proinflamatoria y esta proteína interactua con otras citoquinas proinflamatorias. GLIZ interfiere con interacciones proteína-proteína con los factores de transcripción NF-kB y AP-1 impidiendo las translocasión nuclear. Además GLIZ se una a RAS/RAF y suprimir la via MAPK. Dado que GLIZ al expresarse tiene un papel antiinflamatorio. En nuestros resultados, obtuvimos una sobreexpresión de GLIZ o TSC22D3 sugiriendo que su sobreexpresión podría contribuir a la disminución de la inflamación en las muestras tratadas con glucocorticoides.
 
+<<<<<<< Updated upstream
 El ultimo hallazgo que obtuvimos fue en relacion al gen DKK-1 o tambien conocida como Dickkopf-1 que codifica para una proteína que actúa inhibidor de la vía Wnt/β-catenina,las cascadas de senalizacion de esta via son cruciales en muchos procesos biologicos como migracion celular, diferenciacion, proliferacion celular; en este caso nos enfocaremos en este ultimo proceso biologico. En  tejidos sanos DKK-1 normalmente tiene una expresion moderada, en nuestros resultados podemos observar en las muestras tratadas con glucocorticoides DDK-1 tiene una expresion moderada, esto sugiere a que el tejido esta mejorando,  diferencia de las muestras sin tratamiento se observa a DDK-1 infraexpresado, lo cual es congruente ya que a menor expresion de este gen, aumenta la proliferacion celular por medio de la via Wnt/β-catenina.
 
 Para finalizar, queremos señalar que, si bien el pipeline de Nextflow fue de gran utilidad y facilitó considerablemente el procesamiento inicial de los datos, el análisis de expresión diferencial y el análisis funcional resultaron más complejos. Esto se debe a que no existe una herramienta completamente automatizada que se ajuste a las condiciones específicas y criterios experimentales que requeríamos.
 
 Adicionalmente, detectamos indicios de posible contaminación en algunas muestras. Sin embargo, no fue posible corregir este problema, ya que desconocemos el organismo responsable del ruido observado en los análisis de control de calidad.
+=======
+El último hallazgo que obtuvimos fue en relación al gen DKK-1 o tambien conocida como Dickkopf-1 que codifica para una proteína que actúa inhibidor de la vía Wnt/β-catenina,las cascadas de señalización de esta vía son cruciales en muchos procesos biológicos como migración celular, diferenciasión, proliferación celular; en este caso nos enfocaremos en este último proceso biológico. En tejidos sanos DKK-1 normalmente tiene una expresión moderada, en nuestros resultados podemos observar en las muestras tratadas con glucocorticoides DDK-1 tiene una expresión moderada, esto sugiere a que el tejido esta mejorando, diferencia de las muestras sin tratamiento se observa a DDK-1 infraexpresado, lo cual es congruente ya que a menor expresión de este gen, aumenta la proliferación celular por medio de la vía Wnt/β-catenina.
+>>>>>>> Stashed changes
 
 # Citas y referencias
 
