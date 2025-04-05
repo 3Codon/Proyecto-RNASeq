@@ -116,6 +116,22 @@ Los outputs que ocupamos mayormente fueron:
 
 - MultiQC procesado
 - Archivo .Rdata con Objeto de Expresion Diferencial
+
+- Script [nextflow_rna_seq_fastp.sge](https://github.com/3Codon/Proyecto-RNASeq/blob/main/jobs/nextflow_rna_seq_fastp.sge)
+  - -r 3.14.0: Esta opción la usamos para definir la versión de nf-core rnaseq a usar. En nuestro caso, usamos la versión 3.14.0 porque la versión de nextflow más reciente en el cluster es las 23.10,.0 y la versión de nf-core rnaseq más reciente (3.18.0) ocupa la versión 24.10.0 de nextflow.
+  - -profile singularity: Usamos esta opción para usar el enviorment de singularity, ya que es mucho más fácil usar esto que cargar todos los programas necesarios en el cluster.
+  - -work-dir: Esta opción define donde se va a hacer la carepta work.
+  - --input: En este parametro se tiene que poner la samplesheet. La samplesheet contiene la ruta a todas las muestras, y también otras cosas que se explicaran es su sección dedicada.
+  - --outdir: Este parametro define la ruta donde se alojaran todos los outputs del pipeline. En este caso, es en nuestra carpeta de **results**.
+  - --max_memory: Esta opción nos permite limitar el uso de memoria del pipeline. En este caso es importante porque tenemos 34 muestras humanas, lo cual es muy demandante y el cluster tiene un limite de asignación de memoria RAM. Nosotros observamos que este limite era de 120 GB.
+  - --max_cpus: Esta opción nos permite limitar el uso de cpus. Es un caso igual al anteriori y por lo tanto usamos solo 5 cores.
+  - --fasta: En este parametro tenemos que poner el directorio donde se encuentra el genoma de referencia humano.
+  - --gtf: En este parametro se pone la dirección del archivo GTF del genoma de referencia humano elegido.
+  - --trimmer: En esta opción definimos el trimmer a usar. Podemos elegir entre fastp o trimgalore. En nuestro caso elegimos fastp porque es mucho más rápido y aparte es capaz de autodetectar los adaptadores
+  - --aligner: Esta opción sirve para definir el alineador a usar. En este caso usamos STAR/salmon
+        Por último, definimos los directorios de los caches para no llenar nuestro usuario del cluster.
+
+
   
 ## Expresion Diferencial y Análisis Funcional
 
@@ -152,3 +168,6 @@ Utilizamos el lenguaje de programacion R para realizar los siguientes scripts.
 - [KEGG - Pathway ID](https://www.genome.jp/kegg/pathway.html)
 - [AnnotationDbi](https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/AnnotationDbi_lesson.html)
 - [Gene Ontology enrichment analysis - Uso de varias bases de datos en R](https://davetang.org/muse/2010/11/10/gene-ontology-enrichment-analysis/)
+- [nf-core/rna-seq](https://nf-co.re/rnaseq/3.12.0/)
+- [Nextflow](https://www.nextflow.io/)
+- [Singularity](https://docs.sylabs.io/guides/3.7/user-guide/)
