@@ -44,10 +44,21 @@ library(ggExtra)
 library(DOSE)
 library(pathview)
 library(BiocManager)
-library(org.Hs.eg.db)
+library(org.Hs.eg.db) 
 library(AnnotationDbi)
 library(tree)
 ```
 # Pipeline
-
+## Elección de datos
 ![](images/Diagrama_de_flujo_RNASeq.png)
+
+Para elegir los datos primero se piensa en el organismo con el que se va a tratar en este caso escogimos al *Homo sapiens* (Humano)
+
+Se seleccionó el artículo "[Endogenous Glucocorticoid Deficiency in Psoriasis Promotes Inflammation and Abnormal Differentiation.](https://europepmc.org/article/PMC/5545780)" en el cual se habla del desconocimiento que se tiene de la biologia molecular sobre la terapia con glucocorticoides en pacientes con psoriasis.
+
+## nf-core/rnaseq
+
+Utilizamos el pipeline nf-core/rnaseq basado en Nextflow, una herramienta reconocida por su capacidad de ejecutar flujos de trabajo escalables y reproducibles. Este enfoque es ideal para análisis complejos, ya que reduce la dependencia de configuraciones manuales y facilita la trazabilidad del proceso.
+
+El pipeline requiere tan solo un archivo CSV (samplesheet.csv) que especifica los nombres de las muestras y la ubicación de los archivos FASTQ, simplificando la integración de datos experimentales. Además, se incorpora el genoma de referencia hg38 de Ensembl, lo que proporciona una base robusta para el alineamiento y análisis transcriptómico.
+
