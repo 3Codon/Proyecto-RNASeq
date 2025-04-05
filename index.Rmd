@@ -593,7 +593,7 @@ Esta carpeta contiene los scripts de R que usamos para hacer el análisis difere
 
 Los resultados del alineamiento de secuencia fueron los siguientes
 
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 table <- read.table("resumen_STAR_metrics.tsv", header = TRUE, sep = "\t")
 
 table <- table[,-c(22:33)]
@@ -601,7 +601,19 @@ table <- table[,-c(22:33)]
 knitr::kable(table, format = "markdown", caption = "Tabla 3-1: Resumen de alineamiento")
 ```
 
+En muchos experimentos de RNA‐seq, obtener que aproximadamente el 70% de las secuencias se alinee al transcriptoma o genoma se considera un valor razonable, especialmente en estudios con mamíferos. Esto se debe a que factores como la complejidad del transcriptoma, la presencia de secuencias repetitivas, rRNA residual o incluso RNA degradado pueden reducir la tasa de mapeo en comparación con datos de ADN, donde se esperan tasas más altas.
+
 ## Predicción de cuentas
+
+El pipeline de nf-core/rnaseq utiliza **Salmon** para la cuantificación de transcritos. Salmon es un programa de alineación de RNA-seq que se basa en un enfoque de mapeo cuasi-aleatorio (quasi-mapping) y es capaz de realizar la cuantificación de transcritos a partir de datos de RNA-seq de manera rápida y precisa.
+
+Los resultados de Salmon se encuentran en la carpeta `star_salmon` y están organizados por muestra. Cada muestra tiene su propia carpeta que contiene los archivos de salida generados por Salmon, incluyendo los archivos de conteo de genes y transcritos.
+
+```
+salmon.merged.gene_counts_length_scaled.rds  salmon.merged.gene_counts_scaled.rds  salmon.merged.transcript_counts.rds
+salmon.merged.gene_counts_length_scaled.tsv  salmon.merged.gene_counts_scaled.tsv  salmon.merged.transcript_counts.tsv
+salmon.merged.gene_counts.rds                salmon.merged.gene_counts.tsv
+```
 
 ## Expresión diferencial
 
