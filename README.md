@@ -48,6 +48,10 @@ library(org.Hs.eg.db)
 library(AnnotationDbi)
 library(tree)
 ```
+# Resumen
+
+El estudio comparó la expresión génica en piel sana, lesional y no lesional de pacientes con psoriasis antes y 24 horas después del tratamiento con glucocorticoides. Se analizaron 34 transcriptomas de 17 pacientes usando secuenciación en Illumina NextSeq 500 y el pipeline nf-core/rna-seq en Nextflow para garantizar la reproducibilidad. Con DESeq2 se identificaron genes diferencialmente expresados y, mediante análisis funcional (GO y KEGG), se evidenció que el tratamiento modula genes implicados en procesos antiinflamatorios y la diferenciación celular, destacándose la regulación de TSC22D3 y GLUL en el contexto de la psoriasis.
+
 # Pipeline
 ![](images/Diagrama_de_flujo_RNASeq.png)
 
