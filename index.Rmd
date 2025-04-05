@@ -533,7 +533,7 @@ La carpeta de scripts contiene uestros jobs, los out_logs de los jobs, los scrip
 
 -   `Equipo1/scripts/out_logs`\`: En esta carpeta están los out logs (procesamiento en vivo) de nuestros 2 jobs.
 
--   `Equipo1/scripts/r_scripts`\`:
+-   `Equipo1/scripts/r_scripts`\`: Esta carpeta contiene los scripts de R que usamos para hacer el análisis diferencial, la visualización de datos y análisis funcional. También contiene un archivo .Rproj, que es un proyecto de RStudio, y un archivo .Rhistory, que guarda el historial de comandos ejecutados en R.
 
 -   `Equipo1/scripts/cache`\`: Esta carpeta es importante porque es donde se aloja el caché formado por el pipeline. En caso de no existir, nuestro usuario del cluster se llenaría con el caché del pipeline porque es la ruta predeterminada.
 
@@ -553,12 +553,11 @@ El output de star es justo los **muestra.bam** y **muestra.bam.bai** que se encu
 
 En esta carpeta se encuentran los fastqs procesados por fastp, con la forma **muestra.fastp.fastq.gz**.
 
-#### r_script
+# Diagrama de flujo
 
 Esta carpeta contiene los scripts de R que usamos para hacer el análisis diferencial, la visualización de datos y análisis funcional. También contiene un archivo .Rproj, que es un proyecto de RStudio, y un archivo .Rhistory, que guarda el historial de comandos ejecutados en R.
 
-# Diagrama de flujo
-
+# Diagrama de flujo 
 ![](images/Diagrama_de_flujo_RNASeq.png)
 
 # Resultados
@@ -602,6 +601,10 @@ Ver que bacterias o microorganismos tienen las muestras pero no es necesario por
 ![](images/clipboard-15205712.png)
 
 ## Limpieza de adaptadores
+
+Parece ser que nuestras secuencias desde que las descargamos, ya estaban trimmeadas, porque fastp no reconoció ningun adaptador:
+
+![](images/clipboard-1479582421.png)
 
 ## Alineamiento de secuencia
 
@@ -706,23 +709,18 @@ Utilizando el paquete `pathview`, se generó una visualización de la vía de se
 
 # Discusión
 
-El objetivo del artículo "Endogenous Glucocorticoid Deficiency in Psoriasis Promotes Inflammation and Abnormal Differentiation" es entender, a nivel de la biología molecular, el efecto de la baja producción endógena de glucocorticoides en la psoriasis.
-Los autores demuestran que la deficiencia de glucocorticoides induce una respuesta proinflamatoria por parte de los queratinocitos, y que la biosíntesis de glucocorticoides es suprimida por las citoquinas proinflamatorias. También prueban que un tratamiento con glucocorticoides tópicos podría restablecer estas vías de producción endógena de glucocorticoides y normalizar la diferenciación epidérmica.
-Se enfocaron en estudiar los genes relacionados con los glucocorticoides, especialmente NR3C1.
+El objetivo del artículo "Endogenous Glucocorticoid Deficiency in Psoriasis Promotes Inflammation and Abnormal Differentiation" es entender, a nivel de la biología molecular, el efecto de la baja producción endógena de glucocorticoides en la psoriasis. Los autores demuestran que la deficiencia de glucocorticoides induce una respuesta proinflamatoria por parte de los queratinocitos, y que la biosíntesis de glucocorticoides es suprimida por las citoquinas proinflamatorias. También prueban que un tratamiento con glucocorticoides tópicos podría restablecer estas vías de producción endógena de glucocorticoides y normalizar la diferenciación epidérmica. Se enfocaron en estudiar los genes relacionados con los glucocorticoides, especialmente NR3C1.
 
 Por otra parte, nuestro objetivo es encontrar genes diferencialmente expresados en la psoriasis y su relación con los glucocorticoides. Para esto, realizamos un análisis de expresión diferencial entre muestras de piel con psoriasis, antes y después del tratamiento con glucocorticoides. Encontramos que los genes están relacionados con la respuesta inmune, la inflamación, la proliferación y la biosíntesis de aminoácidos, entre otros procesos, lo que sugiere que los glucocorticoides pueden tener un efecto antiinflamatorio en la psoriasis.
 
-Uno de los hallazgos más relevantes que encontramos en nuestro análisis de expresión diferencial (Figura 5-3) fue la sobreexpresión de GLUL en las muestras tratadas con glucocorticoides. Este gen codifica para la enzima glutamina sintetasa, que es responsable de la síntesis de glutamina a partir de glutamato y amoníaco. El glutamato activa los receptores de glutamato en las células inmunitarias (especialmente en las células $T\gamma\delta$). La activación de estos receptores afecta la supervivencia de dichas células y modula los niveles de citoquinas proinflamatorias como la IL-17A, la cual induce inflamación mediante el reclutamiento de neutrófilos, aumentando la respuesta autoinmune, así como la liberación de quimiocinas y péptidos antimicrobianos, como se puede observar en la Figura 6-2.
-Por lo tanto, la sobreexpresión de GLUL en las muestras tratadas con glucocorticoides podría estar relacionada con la disminución de la inflamación ya que transforma el glutamato en glutamina, impidiendo la produccion de IL-17A.
+Uno de los hallazgos más relevantes que encontramos en nuestro análisis de expresión diferencial (Figura 5-3) fue la sobreexpresión de GLUL en las muestras tratadas con glucocorticoides. Este gen codifica para la enzima glutamina sintetasa, que es responsable de la síntesis de glutamina a partir de glutamato y amoníaco. El glutamato activa los receptores de glutamato en las células inmunitarias (especialmente en las células $T\gamma\delta$). La activación de estos receptores afecta la supervivencia de dichas células y modula los niveles de citoquinas proinflamatorias como la IL-17A, la cual induce inflamación mediante el reclutamiento de neutrófilos, aumentando la respuesta autoinmune, así como la liberación de quimiocinas y péptidos antimicrobianos, como se puede observar en la Figura 6-2. Por lo tanto, la sobreexpresión de GLUL en las muestras tratadas con glucocorticoides podría estar relacionada con la disminución de la inflamación ya que transforma el glutamato en glutamina, impidiendo la produccion de IL-17A.
 
 Otro hallazgo importante fue la sobreexpresión de TSC22D3 (conocida tambien como GLIZ), un gen que codifica para una proteína que actúa como un represor transcripcional de la IL-17 limitando la diferenciacion celular proinflamatoria y esta proteina interactua con otras citoquinas proinflamatorias. GLIZ interfiere con interacciones proteina-proteina con los factores de transcripción NF-kB y AP-1 impidiendo las translocasion nuclear. Ademas GLIZ se una a RAS/RAF y suprimir la via MAPK. Dado que GLIZ al expresarse tiene un papel antiinflamatorio. En nuestros resultados, obtuvimos una sobreexpresion de GLIZ o TSC22D3 sugiriendo que su sobreexpresión podría contribuir a la disminución de la inflamación en las muestras tratadas con glucocorticoides.
 
-El ultimo hallazgo que obtuvimos fue en relacion al gen DKK-1 o tambien conocida como Dickkopf-1 que codifica para una proteína que actúa inhibidor de la vía Wnt/β-catenina,las cascadas de senalizacion de esta via son cruciales en muchos procesos biologicos como migracion celular, diferenciacion, proliferacion celular; en este caso nos enfocaremos en este ultimo proceso biologico. En  tejidos sanos DKK-1 normalmente tiene una expresion moderada, en nuestros resultados podemos observar en las muestras tratadas con glucocorticoides DDK-1 tiene una expresion moderada, esto sugiere a que el tejido esta mejorando,  diferencia de las muestras sin tratamiento se observa a DDK-1 infraexpresado, lo cual es congruente ya que a menor expresion de este gen, aumenta la proliferacion celular por medio de la via Wnt/β-catenina.
-
-
+El ultimo hallazgo que obtuvimos fue en relacion al gen DKK-1 o tambien conocida como Dickkopf-1 que codifica para una proteína que actúa inhibidor de la vía Wnt/β-catenina,las cascadas de senalizacion de esta via son cruciales en muchos procesos biologicos como migracion celular, diferenciacion, proliferacion celular; en este caso nos enfocaremos en este ultimo proceso biologico. En tejidos sanos DKK-1 normalmente tiene una expresion moderada, en nuestros resultados podemos observar en las muestras tratadas con glucocorticoides DDK-1 tiene una expresion moderada, esto sugiere a que el tejido esta mejorando, diferencia de las muestras sin tratamiento se observa a DDK-1 infraexpresado, lo cual es congruente ya que a menor expresion de este gen, aumenta la proliferacion celular por medio de la via Wnt/β-catenina.
 
 # Citas y referencias
 
-<https://www.sciencedirect.com/science/article/pii/S0022202X1931629X>
+Loukia N. Lili, Anna Klopot, Benjamin Readhead, Gleb Baida, Joel T. Dudley, Irina Budunova, Transcriptomic Network Interactions in Human Skin Treated with Topical Glucocorticoid Clobetasol Propionate, Journal of Investigative Dermatology, Volume 139, Issue 11, 2019, Pages 2281-2291, ISSN 0022-202X, <https://doi.org/10.1016/j.jid.2019.04.021>. (<https://www.sciencedirect.com/science/article/pii/S0022202X1931629X>) Abstract: Glucocorticoids are the most frequently used anti-inflammatory drugs in dermatology. However, the molecular signature of glucocorticoids and their receptor in human skin is largely unknown. Our validated bioinformatics analysis of human skin transcriptome induced by topical glucocorticoid clobetasol propionate (CBP) in healthy volunteers identified numerous unreported glucocorticoid-responsive genes, including over a thousand noncoding RNAs. We observed sexual and racial dimorphism in the CBP response including a shift toward IFN-α/IFN-γ and IL-6/Jak/Signal transducer and activator of transcription (STAT) 3 signaling in female skin; and a larger response to CBP in African-American skin. Weighted gene coexpression network analysis unveiled a dense skin network of 41 transcription factors including circadian Kruppel-like factor 9 (KLF9), and ∼260 of their target genes enriched for functional pathways representative of the entire CBP transcriptome. Using keratinocytes with Kruppel-like factor 9 knockdown, we revealed a feedforward loop in glucocorticoid receptor signaling, previously unreported. Interestingly, many of the CBP-regulated transcription factors were involved in the control of development, metabolism, circadian clock; and 80% of them were associated with skin aging showing similarities between glucocorticoid-treated and aged skin. Overall, these findings indicate that glucocorticoid receptor acts as an important regulator of gene expression in skin—both at the transcriptional and posttranscriptional level—via multiple mechanisms including regulation of noncoding RNAs and multiple core transcription factors.
 
-<https://www.sciencedirect.com/science/article/pii/S0040816621000859>
+Guanhua Li, Lu Liu, Zhihua Yin, Zhizhong Ye, Nan Shen, Glutamine metabolism is essential for the production of IL-17A in γδ T cells and skin inflammation, Tissue and Cell, Volume 71, 2021, 101569, ISSN 0040-8166, <https://doi.org/10.1016/j.tice.2021.101569>. (<https://www.sciencedirect.com/science/article/pii/S0040816621000859>) Abstract: γδ T cell is one of the most important pathogenic immune cells in autoimmunity, especially in mucosal and epithelial diseases. Metabolism is essential for the maintenance of immune homeostasis. However, unlike αβ T cells, the metabolic regulation of γδ T cell activation still remain unclear. Here, we identified glutamine metabolism as a critical regulator for the generation of IL-17-producing γδ T cells. Metabolic screening uncovered that amino acids related to glutamine metabolism increased most obviously during γδ T cell activation. Pharmaceutical blocking of glutamine impaired IL-17 production in γδ T cells both in vitro and in vivo. Mechanism studies further revealed that genes downregulated upon glutamine deprivation enriched in IL-17 and IL-23/STAT3 signaling pathways. Consistent with this, the activation of STAT3 was suppressed after glutamine blocking. More importantly, application of glutamine antagonist in vivo alleviated the progression of IL-23 induced psoriatic mice model. In addition, both the glutamine level and the expression of glutamine related enzymes were found higher in psoriasis patients when compared with healthy controls. Therefore, our work identified an important metabolic regulatory pathway in γδ T cell activation and suggested that glutamine metabolism could be used as a target for the treatment of γδ T cell related diseases. Keywords: Autoimmune disease; γδ T cell; Glutamine metabolism
