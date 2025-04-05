@@ -60,6 +60,19 @@ Se seleccionó el artículo "[Endogenous Glucocorticoid Deficiency in Psoriasis 
 
 Con la información proporcionada por el articulo creamos una tabla que contiene los metadatos para futuros analisis.
 
+Para obtener los datos ocupamos los siguientes scripts:
+
+- script [download_data.sge](https://github.com/3Codon/Proyecto-RNASeq/blob/main/jobs/download_data.sge)
+  - Este job es el que usamos para descargar nuestros datos
+  - `wget`: Es una función que sirve para descargar cosas de la web.
+
+Para realizar el análisis de calidad con los datos sin procesar se utilizó el siguiente script:
+
+- script [fastqcs_raw.sge](https://github.com/3Codon/Proyecto-RNASeq/blob/main/jobs/fastqcs_raw.sge)
+- Se utiliza fastq y multiqc
+- `fastqc`: Realiza un reporte de calidad por cada fastq de la muestra.
+- `multiqc`: Realiza un reporte en conjunto con los otros reportes de fastqc.
+
 ## nf-core/rnaseq
 
 Utilizamos el pipeline nf-core/rnaseq basado en Nextflow, una herramienta reconocida por su capacidad de ejecutar flujos de trabajo escalables y reproducibles. Este enfoque es ideal para análisis complejos, ya que reduce la dependencia de configuraciones manuales y facilita la trazabilidad del proceso.
@@ -117,7 +130,7 @@ Los outputs que ocupamos mayormente fueron:
 - MultiQC procesado
 - Archivo .Rdata con Objeto de Expresion Diferencial
 
-Para realizar esto se usó el siguiente script
+Para realizar esto se usó el siguiente script:
 
 - Script [nextflow_rna_seq_fastp.sge](https://github.com/3Codon/Proyecto-RNASeq/blob/main/jobs/nextflow_rna_seq_fastp.sge)
   - `-r 3.14.0`: Esta opción la usamos para definir la versión de nf-core rnaseq a usar. En nuestro caso, usamos la versión 3.14.0 porque la versión de nextflow más reciente en el cluster es las 23.10,.0 y la versión de nf-core rnaseq más reciente (3.18.0) ocupa la versión 24.10.0 de nextflow.
