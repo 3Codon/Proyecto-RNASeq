@@ -557,7 +557,8 @@ En esta carpeta se encuentran los fastqs procesados por fastp, con la forma **mu
 
 Esta carpeta contiene los scripts de R que usamos para hacer el análisis diferencial, la visualización de datos y análisis funcional. También contiene un archivo .Rproj, que es un proyecto de RStudio, y un archivo .Rhistory, que guarda el historial de comandos ejecutados en R.
 
-# Diagrama de flujo 
+# Diagrama de flujo
+
 ![](images/Diagrama_de_flujo_RNASeq.png)
 
 # Resultados
@@ -568,13 +569,23 @@ Esta carpeta contiene los scripts de R que usamos para hacer el análisis difere
 
 ![](images/clipboard-3184264068.png)
 
+En este fase del análisis, nos indica los resultados generales de cada fase los resultados generales del ánalisis cada una de las fases de FastQC en cada una de las muestras.
+
+La primera fase que nos muestra el porcentaje de duplicados en cada una de las muestras,
+
 ![](images/clipboard-4021843613.png)
 
 ![](images/clipboard-4236530129.png)
 
 ![](images/clipboard-3539655336.png)
 
+Todos fallaron porque al principio no se leía bien, se consideraban como errores de secuenciación
+
 ![](images/clipboard-2910841059.png)
+
+Posiblemnte por contaminaciónl, pero comun por ser de piel y enferma
+
+Ver que bacterias o microorganismos tienen las muestras pero no es necesario porque cuando se hace el index del genoma de referencia las reads de microbios no pegarán
 
 ![](images/clipboard-263100148.png)
 
@@ -612,7 +623,7 @@ El pipeline de nf-core/rnaseq utiliza **Salmon** para la cuantificación de tran
 
 Los resultados de Salmon se encuentran en la carpeta `star_salmon` y están organizados por muestra. Cada muestra tiene su propia carpeta que contiene los archivos de salida generados por Salmon, incluyendo los archivos de conteo de genes y transcritos.
 
-```
+```         
 salmon.merged.gene_counts_length_scaled.rds  salmon.merged.gene_counts_scaled.rds  salmon.merged.transcript_counts.rds
 salmon.merged.gene_counts_length_scaled.tsv  salmon.merged.gene_counts_scaled.tsv  salmon.merged.transcript_counts.tsv
 salmon.merged.gene_counts.rds                salmon.merged.gene_counts.tsv
