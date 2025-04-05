@@ -69,9 +69,9 @@ Para obtener los datos ocupamos los siguientes scripts:
 Para realizar el análisis de calidad con los datos sin procesar se utilizó el siguiente script:
 
 - script [fastqcs_raw.sge](https://github.com/3Codon/Proyecto-RNASeq/blob/main/jobs/fastqcs_raw.sge)
-- Se utiliza fastq y multiqc
-- `fastqc`: Realiza un reporte de calidad por cada fastq de la muestra.
-- `multiqc`: Realiza un reporte en conjunto con los otros reportes de fastqc.
+  - Se utiliza fastq y multiqc
+  - `fastqc`: Realiza un reporte de calidad por cada fastq de la muestra.
+  - `multiqc`: Realiza un reporte en conjunto con los otros reportes de fastqc.
 
 ## nf-core/rnaseq
 
