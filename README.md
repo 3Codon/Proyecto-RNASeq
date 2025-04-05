@@ -58,6 +58,8 @@ Para elegir los datos primero se piensa en el organismo con el que se va a trata
 
 Se seleccionó el artículo "[Endogenous Glucocorticoid Deficiency in Psoriasis Promotes Inflammation and Abnormal Differentiation.](https://europepmc.org/article/PMC/5545780)" en el cual se habla del desconocimiento que se tiene de la biologia molecular sobre la terapia con glucocorticoides en pacientes con psoriasis.
 
+Con la información proporcionada por el articulo creamos una tabla que contiene los metadatos para futuros analisis.
+
 ## nf-core/rnaseq
 
 Utilizamos el pipeline nf-core/rnaseq basado en Nextflow, una herramienta reconocida por su capacidad de ejecutar flujos de trabajo escalables y reproducibles. Este enfoque es ideal para análisis complejos, ya que reduce la dependencia de configuraciones manuales y facilita la trazabilidad del proceso.
@@ -109,3 +111,29 @@ En este pipeline se realizan diversos procesos, segun la pagina [nf-core/rnaseq/
 - Pseudo-alineamiento y cuantificación (Salmon)
 
 - Presentación del control de calidad para lecturas crudas, alineamientos, biotipo de genes, similitud entre muestras y verificación de polaridad (MultiQC, R)
+
+Los outputs que ocupamos mayormente fueron:
+
+- MultiQC procesado
+- Archivo .Rdata con Objeto de Expresion Diferencial
+  
+## Expresion Diferencial y Análisis Funcional
+
+Utilizamos el lenguaje de programacion R para realizar los siguientes scripts.
+
+- Script [DEG_analysis.R](https://github.com/3Codon/Proyecto-RNASeq/blob/main/scripts/DEG_Analysis.R)
+    1) Importacion de objeto dds.
+    2) Modificacion del objeto dds con metadata propia.
+    3) Cambiar el diseño del objeto dds.
+    4) Correr nuevamente el análisis de expresion diferencial
+    5) Normalizacion de datos utilizando la Transformación Estabilizadora de la Varianza.
+    6) Análisis de componentes principales para deteccion de batch effect y reconocimiento de patrones.
+    7) Obtener los resultados de los contraste de DEG
+
+- Script [Data_Visualization.R](https://github.com/3Codon/Proyecto-RNASeq/blob/main/scripts/Data_Visualization.R)
+    1) Visualizacion de genes diferencialmente expresados por volcano plot.
+    2) Visualizacion de los genes diferencialmente expresados con mayor relevancia con `pheatmap`.
+
+- Script [GOterms_analysis.R](https://github.com/3Codon/Proyecto-RNASeq/blob/main/scripts/GOterms_analysis.R)
+    1) Identificacion de funcion de los genes diferencialmente expresados con mayor relevancia con `gprofiler2`.
+    2) Visualizacion de genes expresados en via de señalizacion deseada (IL-17) usando la base de datos KEGG.
