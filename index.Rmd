@@ -580,9 +580,8 @@ En esta fase, el módulo aparece marcado como error debido a que el programa no 
 
 ![](images/clipboard-2910841059.png)
 
-Posiblemnte por contaminaciónl, pero comun por ser de piel y enferma
-
-Ver que bacterias o microorganismos tienen las muestras pero no es necesario porque cuando se hace el index del genoma de referencia las reads de microbios no pegarán
+En esta fase del analisis nos indica que podria haber error pero es porqe posiblemente se deba a contaminación, lo cual es común en muestras provenientes de piel, especialmente si el individuo estaba enfermo.
+Aunque sería posible identificar qué bacterias o microorganismos están presentes en las muestras, no es estrictamente necesario en este caso, ya que durante el indexado contra el genoma de referencia, las lecturas correspondientes a microbios no alinearán y, por lo tanto, serán descartadas.
 
 ![](images/clipboard-263100148.png)
 
