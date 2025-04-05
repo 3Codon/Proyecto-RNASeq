@@ -600,7 +600,11 @@ En esta última fase del análisis de calidad de nuestros fastq podemos observar
 
 ![](images/clipboard-3592789900.png)
 
+Una vez procesadas las muestras, se observa una reducción en el número de secuencias duplicadas. Esta disminución es un buen indicador, ya que sugiere una mayor diversidad en las lecturas y una menor redundancia, lo cual mejora la calidad del análisis y la representatividad del conjunto de datos.
+
 ![](images/clipboard-15205712.png)
+
+En la sección de Sequence Quality Histograms (histogramas de calidad por secuencia), todas las muestras presentaron resultados correctos. Las distribuciones muestran que la mayoría de las lecturas tienen una calidad promedio alta, lo cual indica que las secuencias son confiables y que el proceso de secuenciación fue exitoso. Este resultado es favorable, ya que una buena calidad global de las lecturas es fundamental para obtener análisis precisos en las etapas posteriores.
 
 ## Limpieza de adaptadores
 
@@ -720,15 +724,12 @@ Además, en la figura 6-1a se observa que los procesos biológicos asociados con
 
 Otro hallazgo importante fue la sobreexpresión de TSC22D3 (conocida tambien como GLIZ), un gen que codifica para una proteína que actúa como un represor transcripcional de la IL-17 limitando la diferenciacion celular proinflamatoria y esta proteína interactua con otras citoquinas proinflamatorias. GLIZ interfiere con interacciones proteína-proteína con los factores de transcripción NF-kB y AP-1 impidiendo las translocasión nuclear. Además GLIZ se una a RAS/RAF y suprimir la via MAPK. Dado que GLIZ al expresarse tiene un papel antiinflamatorio. En nuestros resultados, obtuvimos una sobreexpresión de GLIZ o TSC22D3 sugiriendo que su sobreexpresión podría contribuir a la disminución de la inflamación en las muestras tratadas con glucocorticoides.
 
-<<<<<<< Updated upstream
 El ultimo hallazgo que obtuvimos fue en relacion al gen DKK-1 o tambien conocida como Dickkopf-1 que codifica para una proteína que actúa inhibidor de la vía Wnt/β-catenina,las cascadas de senalizacion de esta via son cruciales en muchos procesos biologicos como migracion celular, diferenciacion, proliferacion celular; en este caso nos enfocaremos en este ultimo proceso biologico. En  tejidos sanos DKK-1 normalmente tiene una expresion moderada, en nuestros resultados podemos observar en las muestras tratadas con glucocorticoides DDK-1 tiene una expresion moderada, esto sugiere a que el tejido esta mejorando,  diferencia de las muestras sin tratamiento se observa a DDK-1 infraexpresado, lo cual es congruente ya que a menor expresion de este gen, aumenta la proliferacion celular por medio de la via Wnt/β-catenina.
 
 Para finalizar, queremos señalar que, si bien el pipeline de Nextflow fue de gran utilidad y facilitó considerablemente el procesamiento inicial de los datos, el análisis de expresión diferencial y el análisis funcional resultaron más complejos. Esto se debe a que no existe una herramienta completamente automatizada que se ajuste a las condiciones específicas y criterios experimentales que requeríamos.
 
 Adicionalmente, detectamos indicios de posible contaminación en algunas muestras. Sin embargo, no fue posible corregir este problema, ya que desconocemos el organismo responsable del ruido observado en los análisis de control de calidad.
-=======
-El último hallazgo que obtuvimos fue en relación al gen DKK-1 o tambien conocida como Dickkopf-1 que codifica para una proteína que actúa inhibidor de la vía Wnt/β-catenina,las cascadas de señalización de esta vía son cruciales en muchos procesos biológicos como migración celular, diferenciasión, proliferación celular; en este caso nos enfocaremos en este último proceso biológico. En tejidos sanos DKK-1 normalmente tiene una expresión moderada, en nuestros resultados podemos observar en las muestras tratadas con glucocorticoides DDK-1 tiene una expresión moderada, esto sugiere a que el tejido esta mejorando, diferencia de las muestras sin tratamiento se observa a DDK-1 infraexpresado, lo cual es congruente ya que a menor expresión de este gen, aumenta la proliferación celular por medio de la vía Wnt/β-catenina.
->>>>>>> Stashed changes
+
 
 # Citas y referencias
 
