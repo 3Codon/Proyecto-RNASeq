@@ -576,7 +576,7 @@ En esta fase, nos indica la calidad promedio de cada lectura y cuatas secuencias
 
 ![](images/clipboard-3539655336.png)
 
-Todos fallaron porque al principio no se leía bien, se consideraban como errores de secuenciación
+En esta fase, el módulo aparece marcado como error debido a que el programa no logra interpretar correctamente las secuencias. Esto ocurre porque, al inicio de las lecturas, la calidad es baja, lo que lleva a que sean clasificadas como errores de secuenciación, pero para este tipo de datos son comunes. 
 
 ![](images/clipboard-2910841059.png)
 
