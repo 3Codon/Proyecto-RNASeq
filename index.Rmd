@@ -712,6 +712,28 @@ El ultimo hallazgo que obtuvimos fue en relacion al gen DKK-1 o tambien conocida
 
 # Citas y referencias
 
-<https://www.sciencedirect.com/science/article/pii/S0022202X1931629X>
+Loukia N. Lili, Anna Klopot, Benjamin Readhead, Gleb Baida, Joel T. Dudley, Irina Budunova,
+Transcriptomic Network Interactions in Human Skin Treated with Topical Glucocorticoid Clobetasol Propionate,
+Journal of Investigative Dermatology,
+Volume 139, Issue 11,
+2019,
+Pages 2281-2291,
+ISSN 0022-202X,
+https://doi.org/10.1016/j.jid.2019.04.021.
+(https://www.sciencedirect.com/science/article/pii/S0022202X1931629X)
+Abstract: Glucocorticoids are the most frequently used anti-inflammatory drugs in dermatology. However, the molecular signature of glucocorticoids and their receptor in human skin is largely unknown. Our validated bioinformatics analysis of human skin transcriptome induced by topical glucocorticoid clobetasol propionate (CBP) in healthy volunteers identified numerous unreported glucocorticoid-responsive genes, including over a thousand noncoding RNAs. We observed sexual and racial dimorphism in the CBP response including a shift toward IFN-α/IFN-γ and IL-6/Jak/Signal transducer and activator of transcription (STAT) 3 signaling in female skin; and a larger response to CBP in African-American skin. Weighted gene coexpression network analysis unveiled a dense skin network of 41 transcription factors including circadian Kruppel-like factor 9 (KLF9), and ∼260 of their target genes enriched for functional pathways representative of the entire CBP transcriptome. Using keratinocytes with Kruppel-like factor 9 knockdown, we revealed a feedforward loop in glucocorticoid receptor signaling, previously unreported. Interestingly, many of the CBP-regulated transcription factors were involved in the control of development, metabolism, circadian clock; and 80% of them were associated with skin aging showing similarities between glucocorticoid-treated and aged skin. Overall, these findings indicate that glucocorticoid receptor acts as an important regulator of gene expression in skin—both at the transcriptional and posttranscriptional level—via multiple mechanisms including regulation of noncoding RNAs and multiple core transcription factors.
 
-<https://www.sciencedirect.com/science/article/pii/S0040816621000859>
+
+Guanhua Li, Lu Liu, Zhihua Yin, Zhizhong Ye, Nan Shen,
+Glutamine metabolism is essential for the production of IL-17A in γδ T cells and skin inflammation,
+Tissue and Cell,
+Volume 71,
+2021,
+101569,
+ISSN 0040-8166,
+https://doi.org/10.1016/j.tice.2021.101569.
+(https://www.sciencedirect.com/science/article/pii/S0040816621000859)
+Abstract: γδ T cell is one of the most important pathogenic immune cells in autoimmunity, especially in mucosal and epithelial diseases. Metabolism is essential for the maintenance of immune homeostasis. However, unlike αβ T cells, the metabolic regulation of γδ T cell activation still remain unclear. Here, we identified glutamine metabolism as a critical regulator for the generation of IL-17-producing γδ T cells. Metabolic screening uncovered that amino acids related to glutamine metabolism increased most obviously during γδ T cell activation. Pharmaceutical blocking of glutamine impaired IL-17 production in γδ T cells both in vitro and in vivo. Mechanism studies further revealed that genes downregulated upon glutamine deprivation enriched in IL-17 and IL-23/STAT3 signaling pathways. Consistent with this, the activation of STAT3 was suppressed after glutamine blocking. More importantly, application of glutamine antagonist in vivo alleviated the progression of IL-23 induced psoriatic mice model. In addition, both the glutamine level and the expression of glutamine related enzymes were found higher in psoriasis patients when compared with healthy controls. Therefore, our work identified an important metabolic regulatory pathway in γδ T cell activation and suggested that glutamine metabolism could be used as a target for the treatment of γδ T cell related diseases.
+Keywords: Autoimmune disease; γδ T cell; Glutamine metabolism
+
+
