@@ -1,4 +1,4 @@
-# Analisis Diferencial de pacientes con Psoriasis en tratamiento con Glucocorticoides
+# Expresión Diferencial y Análisis Funcional de Pacientes con Psoriasis en Tratamiento con Glucocorticoides
 
 - Emiliano Ferro Rodriguez
 - Jorge Alfredo Suazo Victoria
