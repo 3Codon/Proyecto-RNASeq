@@ -572,7 +572,7 @@ En la fase Sequence Quality Histograms nos indica que las muestras tienen buena 
 
 ![](images/clipboard-4236530129.png)
 
-En esta fase, nos indica la calidad promedio de cada lectura y cuatas secuencias tienen esa calidad promedio, en esta grafica pocemos ver que tenemos muchas secuecias con una gran calidad
+En esta fase, nos indica la calidad promedio de cada lectura y cuatas secuencias tienen esa calidad promedio, en esta grafica pocemos ver que tenemos muchas secuecias con una gran calidad.
 
 ![](images/clipboard-3539655336.png)
 
@@ -584,6 +584,7 @@ En esta fase del analisis nos indica que podria haber error pero es porqe posibl
 Aunque sería posible identificar qué bacterias o microorganismos están presentes en las muestras, no es estrictamente necesario en este caso, ya que durante el indexado contra el genoma de referencia, las lecturas correspondientes a microbios no alinearán y, por lo tanto, serán descartadas.
 
 ![](images/clipboard-263100148.png)
+Esta fase evalúa si en las secuencias de las muestras se encuentran nucleótidos no identificados, representados por la letra "N". Es decir, analiza la presencia de bases que el secuenciador no pudo determinar con certeza. En nuestro caso, podemos observar que ninguna de las muestras contiene "N" en sus secuencias, lo que indica una buena calidad en este aspecto.
 
 ![](images/clipboard-63839139.png)
 
